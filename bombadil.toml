@@ -1,0 +1,16 @@
+# Path to your dotfile directory containing this config file (relative to $HOME). 
+dotfiles_dir = ".dotfiles"
+
+# Dotfiles template with their respective `source` template and `target` directories.
+[settings.dots]
+ags = {source = "ags", target = ".config/ags"}
+dunst = {source = "dunst", target = ".config/dunst"}
+fastfetch = {source = "fastfetch", target = ".config/fastfetch"}
+fish = {source = "fish", target = ".config/fish"}
+gitconfig = {source = "git/gitconfig", target = ".gitconfig"}
+hyprland = {source = "hyprland", target = ".config/hypr"}
+kitty = {source = "kitty", target = ".config/kitty"}
+nvim = {source = "nvim", target = ".config/nvim"}
+rofi = {source = "rofi", target = ".config/rofi"}
+starship = {source = "starship.toml", target = ".config/starship.toml"}
+yazi = {source = "yazi", target = ".config/yazi"}

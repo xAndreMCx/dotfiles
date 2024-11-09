@@ -1,0 +1,90 @@
+* {
+  all: unset;
+  margin: 0;
+  padding: 0;
+  font-family: "JetBrains Mono Nerd Font";
+  font-weight: bold;
+  font-size: 14px;
+  color: #cdd6f4; }
+
+window {
+  background-color: transparent; }
+
+.bar {
+  min-height: 24px; }
+
+.module {
+  background: #1e1e2e;
+  border-radius: 24px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #7f849c;
+  padding: 0px 10px; }
+
+.left_box {
+  min-width: 500px; }
+
+.center_box {
+  min-width: 250px; }
+
+.right_box {
+  min-width: 500px; }
+
+.workspaces {
+  background-color: #313244;
+  border-radius: 24px;
+  padding: 0px 5px;
+  margin: 0px 5px; }
+
+.workspaces button:hover {
+  border-radius: 10px;
+  background-color: #b4befe; }
+  .workspaces button:hover label {
+    color: #181825; }
+
+.workspace_btn {
+  min-width: 20px; }
+
+.workspace_btn_active {
+  background-color: #89b4fa;
+  border-radius: 20px; }
+  .workspace_btn_active label {
+    color: #181825; }
+
+.workspace_btn_empty label {
+  color: #9399b2; }
+
+.workspace_btn_active.workspace_btn_empty label {
+  color: #181825; }
+
+.arch_logo {
+  font-size: 16px;
+  color: #1793d1; }
+
+.focus_title {
+  color: #9399b2; }
+
+.power_menu {
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #7f849c;
+  background-color: #313244;
+  min-width: 496px;
+  min-height: 126px; }
+
+.power_menu_entry {
+  border-color: #313244;
+  min-width: 100px;
+  min-height: 100px;
+  margin: 15px 22px 15px 0px; }
+  .power_menu_entry:last-child {
+    margin-right: 0px; }
+  .power_menu_entry image {
+    font-size: 36px; }
+  .power_menu_entry label {
+    font-size: 14px; }
+
+.power_menu_entries button:hover {
+  background-color: #7f849c;
+  border-radius: 10px; }

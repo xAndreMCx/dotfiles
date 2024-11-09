@@ -1,0 +1,5 @@
+#!/bin/bash
+
+hyprpaper &
+ags &
+wl-paste --watch cliphist store &
