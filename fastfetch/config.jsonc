@@ -1,100 +1,114 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-  // "modules": [
-  //   "title",
-  //   "separator",
-  //   "os",
-  //   "kernel",
-  //   "uptime",
-  //   "packages",
-  //   "shell",
-  //   "display",
-  //   "wm",
-  //   "wmtheme",
-  //   "theme",
-  //   "icons",
-  //   "font",
-  //   "cursor",
-  //   "terminal",
-  //   "terminalfont",
-  //   "cpu",
-  //   "gpu",
-  //   "memory",
-  //   "disk",
-  //   "locale",
-  //   "break",
-  //   "colors"
-  // ]
+  "logo": {
+    "padding": {
+      "top": 0,
+      "left": 0,
+      "right": 8
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "key": {
+      "type": "both",
+      "width": 15,
+      "paddingLeft": 0
+    },
+    "bar": {
+      "borderLeft": "[ ",
+      "borderRight": " ]",
+      "charTotal": "-",
+      //"charElapsed": ""
+      "width": 10
+    },
+    "stat": false,
+    "pipe": false,
+    "size": {
+      "ndigits": 2,
+      "maxPrefix": "TB",
+      "binaryPrefix": "iec"
+    },
+    "temp": {
+      "unit": "C",
+      "color": {
+        "red": "red",
+        "green": "green",
+        "yellow": "yellow"
+      },
+      "ndigits": 2
+    },
+    //"color": "blue",
+    "freq": {
+      "ndigits": 2
+    },
+    "percent": {
+      "ndigits": 1,
+      "color": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "type": 9
+    },
+    "noBuffer": false,
+    "constants": [],
+    "showErrors": true,
+    "hideCursor": true,
+    "brightColor": false,
+    "disableLinewrap": false
+  },
   "modules": [
-    "battery",
-    "bios",
-    "bluetooth",
-    "bluetoothradio",
-    "board",
-    "bootmgr",
+    {
+      "type": "os",
+      "format": "{3} {12}"
+    },
+    {
+      "type": "kernel",
+      "format": "{2}"
+    },
+    {
+      "type": "packages",
+      "format": "pacman: {2}" // TODO: change this such that it looks better
+    },
+    {
+      "type": "shell",
+      "format": "{6} {4}" // NOTE: maybe add tty {8}
+    },
+    {
+      "type": "uptime"
+    },
     "break",
-    "brightness",
-    "btrfs",
-    "camera",
-    "chassis",
-    "colors",
-    "command",
-    "cpu",
-    "cpucache",
-    "cpuusage",
-    "cursor",
-    "datetime",
-    "de",
-    "disk",
-    "diskio",
-    "display",
-    "dns",
-    "editor",
-    "font",
-    "gamepad",
-    "gpu",
-    "host",
-    "icons",
-    "initsystem",
-    "kernel",
-    "lm",
-    "loadavg",
-    "locale",
-    "localip",
-    "media",
-    "memory",
-    "monitor",
-    "netio",
-    "opencl",
-    "opengl",
-    "os",
-    "packages",
-    "physicaldisk",
-    "physicalmemory",
-    "player",
-    "poweradapter",
-    "processes",
-    "publicip",
-    "separator",
-    "shell",
-    "sound",
-    "swap",
-    "terminal",
-    "terminalfont",
-    "terminalsize",
-    "terminaltheme",
-    "theme",
-    "title",
-    "tpm",
-    "uptime",
-    "users",
-    "version",
-    "vulkan",
-    "wallpaper",
-    "weather",
-    "wifi",
-    "wm",
-    "wmtheme",
-    "zpool"
+    {
+      "type": "cpu",
+      "format": "{1} ({5} cores) @ {7}"
+    },
+    {
+      "type": "gpu",
+      "format": "{1} {2}"
+    },
+    {
+      "type": "gpu",
+      "format": "{3}",
+      "key": "GPU Driver"
+    },
+    {
+      "type": "memory",
+      "format": "{1} / {2} | {3}"
+    },
+    {
+      "type": "display",
+      "format": "{width}x{height} @ {refresh-rate}Hz | {inch} inches {ppi} ppi "
+    },
+    {
+      "type": "disk",
+      "format": "{size-used} / {size-total} | {size-percentage}"
+    },
+    "break",
+    {
+      "type": "wm"
+    },
+    {
+      "type": "terminal"
+    }
   ]
 }
