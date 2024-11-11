@@ -66,6 +66,11 @@ style_user = "bg:section1 fg:text"
 style_root = "bg:section1 fg:text"
 format = '[ $user ]($style)'
 
+[hostname]
+ssh_only = true
+style = "bg:section1 fg:text"
+format = '[$hostname]($style)'
+
 [directory]
 style = "fg:text bg:section2"
 format = "[ $path ]($style)"
