@@ -81,7 +81,7 @@ truncation_symbol = "…/"
   "documents" = "󰈙"
   "downloads" = " "
   "pictures" = " "
-  "code" = "󰲋 "
+  "~/code" = "󰲋 "
 
 [git_branch]
 symbol = ""
