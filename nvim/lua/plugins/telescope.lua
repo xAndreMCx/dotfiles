@@ -2,6 +2,8 @@ return {
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
   branch = '0.1.x',
+  name = 'telescope',
+
   dependencies = {
     'nvim-lua/plenary.nvim',
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -22,6 +24,7 @@ return {
     -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
+
   config = function()
     -- Two important keymaps to use while in Telescope are:
     --  - Insert mode: <c-/>
