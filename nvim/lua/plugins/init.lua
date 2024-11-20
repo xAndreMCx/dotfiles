@@ -1,6 +1,17 @@
 return {
   {
-    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    opts = {
+      flavor = 'mocha',
+      integrations = {
+        which_key = true,
+      },
+    },
+    init = function()
+      vim.cmd.colorscheme('catppuccin')
+    end,
   },
 
   {
