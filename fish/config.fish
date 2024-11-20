@@ -16,5 +16,7 @@ function starship_transient_rprompt_func
     set_color normal
 end
 
+set -gx EDITOR nvim
+
 starship init fish | source
 enable_transience
