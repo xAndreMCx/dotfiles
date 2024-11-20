@@ -12,10 +12,12 @@ return {
       },
     },
   },
+
   {
     'Bilal2453/luvit-meta',
     lazy = true,
   },
+
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
@@ -201,6 +203,7 @@ return {
       })
     end,
   },
+
   { -- Autoformat
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
