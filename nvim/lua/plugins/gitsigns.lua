@@ -1,14 +1,28 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
+    name = 'gitsigns',
     opts = {
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
+        add = { text = '█' },
+        change = { text = '█' },
+        delete = { text = '' },
+        topdelete = { text = '' }, -- symbol if the first line is deleted
+        changedelete = { text = '█' },
       },
+      signs_staged = {
+        add = { text = '▎' },
+        change = { text = '▎' },
+        delete = { text = '' },
+        topdelete = { text = '' },
+        changedelete = { text = '▎' },
+      },
+      signs_staged_enable = true,
+      numhl = true,
+      linehl = false,
+      word_diff = false,
+      sign_priority = 6,
+
       on_attach = function(bufnr)
         local gitsigns = require('gitsigns')
 
