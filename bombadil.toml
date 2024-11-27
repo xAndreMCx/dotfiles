@@ -14,4 +14,4 @@ dunst = {source = "dunst", target = ".config/dunst"}
 hyprland = {source = "hyprland", target = ".config/hypr"}
 kitty = {source = "kitty", target = ".config/kitty"}
 rofi = {source = "rofi", target = ".config/rofi"}
-
+wezterm = {source = "wezterm", target = ".config/wezterm"}
