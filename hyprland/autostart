@@ -3,3 +3,5 @@
 hyprpaper &
 ags &
 wl-paste --watch cliphist store &
+bombadil watch -p desktop &
+
