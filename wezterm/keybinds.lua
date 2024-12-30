@@ -1,27 +1,28 @@
 local wezterm = require('wezterm')
-local config = {}
-config.disable_default_key_bindings = true
-config.leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 5000 }
-config.keys = {
-  {
-    key = 't',
-    mods = 'LEADER',
-    action = wezterm.action.SpawnTab('CurrentPaneDomain'),
-  },
-  {
-    key = 'q',
-    mods = 'LEADER',
-    action = wezterm.action.CloseCurrentPane({ confirm = false }),
-  },
-  {
-    key = 'h',
-    mods = 'LEADER',
-    action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
-  },
-  {
-    key = 'v',
-    mods = 'LEADER',
-    action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' }),
+local config = {
+  disable_default_key_bindings = true,
+  leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 5000 },
+  keys = {
+    {
+      key = 't',
+      mods = 'LEADER',
+      action = wezterm.action.SpawnTab('CurrentPaneDomain'),
+    },
+    {
+      key = 'q',
+      mods = 'LEADER',
+      action = wezterm.action.CloseCurrentPane({ confirm = false }),
+    },
+    {
+      key = 'h',
+      mods = 'LEADER',
+      action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
+    },
+    {
+      key = 'v',
+      mods = 'LEADER',
+      action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' }),
+    },
   },
   {
     key = '=',
