@@ -24,16 +24,6 @@ local config = {
       action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' }),
     },
   },
-  {
-    key = '=',
-    mods = 'CTRL',
-    action = wezterm.action.IncreaseFontSize,
-  },
-  {
-    key = '-',
-    mods = 'CTRL',
-    action = wezterm.action.DecreaseFontSize,
-  },
 }
 
 for i = 1, 8 do
