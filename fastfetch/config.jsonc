@@ -97,6 +97,7 @@
     },
     {
       "type": "display",
+      "key": "Display",
       "format": "{width}x{height} @ {refresh-rate}Hz | {inch} inches {ppi} ppi "
     },
     {
