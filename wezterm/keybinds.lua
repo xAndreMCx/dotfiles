@@ -33,6 +33,11 @@ local config = {
       mods = 'CTRL',
       action = wezterm.action.DecreaseFontSize,
     },
+    {
+      key = 'L',
+      mods = 'ALT',
+      action = wezterm.action.ShowDebugOverlay,
+    },
   },
 }
 
