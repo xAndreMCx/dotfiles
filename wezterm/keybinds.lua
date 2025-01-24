@@ -23,6 +23,8 @@ local config = {
       mods = 'LEADER',
       action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' }),
     },
+
+    -- font size
     {
       key = '=',
       mods = 'CTRL',
@@ -34,6 +36,12 @@ local config = {
       action = wezterm.action.DecreaseFontSize,
     },
     {
+      key = '0',
+      mods = 'CTRL',
+      action = wezterm.action.ResetFontSize,
+    },
+
+    {
       key = 'L',
       mods = 'ALT',
       action = wezterm.action.ShowDebugOverlay,
@@ -41,6 +49,7 @@ local config = {
   },
 }
 
+-- tab switching
 for i = 1, 8 do
   table.insert(config.keys, {
     key = tostring(i),
