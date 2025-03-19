@@ -40,6 +40,29 @@ def workspaces(monitor: Dict[str, int]) -> Widget.Box:
     )
 
 
+def window_title() -> Widget.Box:
+    return Widget.Box(
+        css_classes=["title"],
+        child=[Widget.Label()],
+    )
+
+
+def update_window_title(self: Widget.Label, monitor: Dict[str, int]) -> None:
+    active_monitor = hyprland.active_window["monitor"]
+    if active_monitor == monitor["hyprland_id"]:
+        self.label = hyprland.active_window["initialTitle"]
+
+
+def left_box(monitor: Dict[str, int]) -> Widget.Box:
+    title = window_title()
+    hyprland.connect(
+        "notify::active-window",
+        lambda x, y: update_window_title(title.child[0], monitor),
+    )
+
+    return Widget.Box(css_classes=["left_box"], child=[workspaces(monitor), title])
+
+
 def bar(monitor: Dict[str, int]) -> Widget.Window:
     date_time = datetime()
     Utils.Poll(1000, lambda x: update_datetime(date_time.child[0]))
@@ -55,7 +78,7 @@ def bar(monitor: Dict[str, int]) -> Widget.Window:
         margin_top=3,
         child=Widget.CenterBox(
             css_classes=["bar"],
-            start_widget=workspaces(monitor),
+            start_widget=left_box(monitor),
             center_widget=date_time,
             end_widget=Widget.Label(label="Hello"),
         ),
