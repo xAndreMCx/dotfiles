@@ -50,7 +50,7 @@ def window_title() -> Widget.Box:
 def update_window_title(self: Widget.Label, monitor: Dict[str, int]) -> None:
     active_monitor = hyprland.active_window["monitor"]
     if active_monitor == monitor["hyprland_id"]:
-        self.label = hyprland.active_window["initialTitle"]
+        self.label = hyprland.active_window["initialTitle"].title()
 
 
 def left_box(monitor: Dict[str, int]) -> Widget.Box:
