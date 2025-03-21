@@ -3,12 +3,13 @@ from ignis.app import Utils
 from ignis.services.hyprland import HyprlandService
 import json
 from modules.bar.bar import bar
+from modules.power.power import power_menu
 
 app = IgnisApp.get_default()
-# app.apply_css("./styles/style.scss")
+app.add_icons(f"{Utils.get_current_dir()}/icons")
+app.apply_css(f"{Utils.get_current_dir()}/styles/style.scss")
 
 hyprland = HyprlandService.get_default()
-# hyprland.connect("notify::active-workspace", lambda x, y: print(x, y))
 monitors_list = json.loads(hyprland.send_command("j/monitors"))
 MONITORS = [
     {
@@ -19,6 +20,7 @@ MONITORS = [
     for item in monitors_list
 ]
 
-# for n in range(Utils.get_n_monitors()):
 for n in range(2):
     bar(MONITORS[n])
+
+power_menu()

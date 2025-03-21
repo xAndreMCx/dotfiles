@@ -1,7 +1,8 @@
 @import "./colors.scss";
 
 $bar_height: 24px;
-$bar_border_width: 2px; // same as hyprland borders
+$bar_border_width: 2px; // same as hyprland borders TODO: make use of bombadil's variables to set this
+$font_size: 12px;
 
 @mixin borders ($border_radius) {
   border-radius: $border_radius;
@@ -16,7 +17,7 @@ $bar_border_width: 2px; // same as hyprland borders
   padding: 0;
   font-family: "JetBrains Mono Nerd Font";
   font-weight: bold;
-  font-size: 14px;
+  font-size: $font_size;
   color: $text;
 }
 
@@ -31,37 +32,37 @@ $bar_border_width: 2px; // same as hyprland borders
 }
 
 .left_box {
-  min-width: 500px;
+  min-width: 400px;
 }
 
-// .center_box {
-//   min-width: 250px;
-// }
+.center_box {
+  min-width: 250px;
+}
 
 .right_box {
-  min-width: 500px;
+  min-width: 400px;
 }
-//
-// .workspaces {
-//   background-color: $surface0;
-//   border-radius: $bar_height;
-//   padding: 0px 5px;
-//   margin: 0px 5px;
-// }
-//
-// .workspaces button:hover {
-//   border-radius: 10px;
-//   background-color: $lavender;
-//
-//   label {
-//     color: $mantle;
-//   }
-// }
-//
-// .workspace_btn {
-//   min-width: $bar_height - (2 * $bar_border_width);
-// }
-//
+
+.workspaces {
+  background-color: $surface0;
+  border-radius: $bar_height;
+  padding: 0px 5px;
+  margin: 0px 5px;
+}
+
+.workspaces button:hover {
+  border-radius: 10px;
+  background-color: $lavender;
+
+  label {
+    color: $mantle;
+  }
+}
+
+.workspace_btn {
+  min-width: $bar_height - (2 * $bar_border_width);
+}
+
 // .workspace_btn_active {
 //   background-color: $blue;
 //
@@ -81,49 +82,56 @@ $bar_border_width: 2px; // same as hyprland borders
 // .workspace_btn_active.workspace_btn_empty label {
 //   color: $mantle;
 // }
-//
-// .arch_logo {
-//   font-size: 16px;
-//   color: #1793d1;
-// }
-//
-// .focus_title {
-//   color: $overlay2;
-// }
-//
-// .power_menu {
-//   $width: 500px;
-//   $height: 130px;
-//   @include borders(10px);
-//   background-color: $surface0;
-//   min-width: $width - 2*$bar_border_width;
-//   min-height: $height - 2*$bar_border_width;
-// }
-//
-// .power_menu_entry {
-//   $size: 100px;
-//   border-color: $surface0;
-//   min-width: $size;
-//   min-height: $size;
-//   // margin-right: 22px; // (power menu $width - 4*$size) / 3;
-//   margin: 15px 22px 15px 0px;
-//
-//
-//   &:last-child {
-//     margin-right: 0px;
-//   }
-//
-//   image {
-//     font-size: 36px;
-//   }
-//
-//   label {
-//     font-size: 14px;
-//   }
-// }
-//
-// .power_menu_entries button:hover {
-//   background-color: $overlay1;
-//   border-radius: 10px;
-//   // border-width: 0px;
-// }
+
+.arch_logo {
+  -gtk-icon-size: $font_size;
+  color: #1793d1;
+}
+
+.window_title {
+  label {
+    color: $overlay2;
+  } 
+}
+
+.power_button {
+  -gtk-icon-size: $font_size;
+}
+
+.power_menu {
+  $width: 500px;
+  $height: 130px;
+  @include borders(10px);
+  background-color: $surface0;
+  min-width: $width - 2*$bar_border_width;
+  min-height: $height - 2*$bar_border_width;
+}
+
+.power_menu_entry {
+  $size: 100px;
+  border-color: $surface0;
+  min-width: $size;
+  min-height: $size;
+  // margin-right: 22px; // (power menu $width - 4*$size) / 3;
+  margin: 15px 22px 15px 0px;
+
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+  image {
+    -gtk-icon-size: 100px;
+  }
+
+  label {
+    font-size: $font_size;
+  }
+
+  button:hover {
+    background-color: $overlay1;
+    border-radius: 10px;
+    // border-width: 0px;
+  }
+}
+

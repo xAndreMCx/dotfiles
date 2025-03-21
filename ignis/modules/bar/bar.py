@@ -2,8 +2,9 @@ import datetime as dt
 from ignis.widgets import Widget
 from ignis.utils import Utils
 from ignis.services.hyprland import HyprlandService
-import os
 from typing import Dict
+
+from ..power.power import power_button
 
 hyprland = HyprlandService.get_default()
 
@@ -14,15 +15,12 @@ def update_datetime(self: Widget.Label) -> None:
     self.label = f" {date} |  {time}"
 
 
-def datetime() -> Widget.Box:
-    return Widget.Box(css_classes=["center_box module"], child=[Widget.Label()])
+def datetime() -> Widget.Label:
+    return Widget.Label()
 
 
 def workspace_dispatch(monitor: Dict[str, int], workspace_id: int):
     workspace = workspace_id + 10 * monitor["id"]
-    # os.system(
-    #     f"notify-send {monitor['name']},hypr={monitor['hyprland_id']}, id={monitor['id']}{workspace=}"
-    # )
     hyprland.send_command(f"dispatch workspace {workspace}")
 
 
@@ -42,7 +40,9 @@ def workspaces(monitor: Dict[str, int]) -> Widget.Box:
 
 def window_title() -> Widget.Box:
     return Widget.Box(
-        css_classes=["title"],
+        hexpand=True,
+        halign="end",
+        css_classes=["window_title"],
         child=[Widget.Label()],
     )
 
@@ -60,13 +60,25 @@ def left_box(monitor: Dict[str, int]) -> Widget.Box:
         lambda x, y: update_window_title(title.child[0], monitor),
     )
 
-    return Widget.Box(css_classes=["left_box"], child=[workspaces(monitor), title])
+    arch_logo = Widget.Icon(css_classes=["arch_logo"], image="arch-symbolic")
+
+    return Widget.Box(
+        css_classes=["left_box", "module"],
+        child=[arch_logo, workspaces(monitor), title],
+    )
+
+
+def center_box() -> Widget.Box:
+    date_time = datetime()
+    Utils.Poll(1000, lambda x: update_datetime(date_time))
+    return Widget.Box(css_classes=["center_box", "module"], child=[date_time])
+
+
+def right_box() -> Widget.Box:
+    return Widget.Box(css_classes=["right_box", "module"], child=[power_button()])
 
 
 def bar(monitor: Dict[str, int]) -> Widget.Window:
-    date_time = datetime()
-    Utils.Poll(1000, lambda x: update_datetime(date_time.child[0]))
-
     bar = Widget.Window(
         namespace=f"bar_monitor{monitor}",
         monitor=monitor["hyprland_id"],
@@ -79,8 +91,8 @@ def bar(monitor: Dict[str, int]) -> Widget.Window:
         child=Widget.CenterBox(
             css_classes=["bar"],
             start_widget=left_box(monitor),
-            center_widget=date_time,
-            end_widget=Widget.Label(label="Hello"),
+            center_widget=center_box(),
+            end_widget=right_box(),
         ),
     )
     return bar
