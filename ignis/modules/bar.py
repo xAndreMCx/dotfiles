@@ -4,7 +4,8 @@ from ignis.utils import Utils
 from ignis.services.hyprland import HyprlandService
 from typing import Dict
 
-from ..power.power import power_button
+from modules.power import power_button
+from modules.volume import volume_button
 
 hyprland = HyprlandService.get_default()
 
@@ -29,7 +30,7 @@ def workspaces(monitor: Dict[str, int]) -> Widget.Box:
         css_classes=["workspaces"],
         child=[
             Widget.Button(
-                css_classes=["workspace_btn"],
+                css_classes=["workspace_button"],
                 child=Widget.Label(label=str(i)),
                 on_click=lambda x: workspace_dispatch(monitor, int(x.child.label)),
             )
@@ -38,26 +39,25 @@ def workspaces(monitor: Dict[str, int]) -> Widget.Box:
     )
 
 
-def window_title() -> Widget.Box:
-    return Widget.Box(
+def window_title() -> Widget.Label:
+    return Widget.Label(
         hexpand=True,
         halign="end",
         css_classes=["window_title"],
-        child=[Widget.Label()],
     )
 
 
 def update_window_title(self: Widget.Label, monitor: Dict[str, int]) -> None:
-    active_monitor = hyprland.active_window["monitor"]
+    active_monitor = hyprland.active_window.monitor
     if active_monitor == monitor["hyprland_id"]:
-        self.label = hyprland.active_window["initialTitle"].title()
+        self.label = hyprland.active_window.initial_title.title()
 
 
 def left_box(monitor: Dict[str, int]) -> Widget.Box:
     title = window_title()
     hyprland.connect(
         "notify::active-window",
-        lambda x, y: update_window_title(title.child[0], monitor),
+        lambda x, y: update_window_title(title, monitor),
     )
 
     arch_logo = Widget.Icon(css_classes=["arch_logo"], image="arch-symbolic")
@@ -75,7 +75,11 @@ def center_box() -> Widget.Box:
 
 
 def right_box() -> Widget.Box:
-    return Widget.Box(css_classes=["right_box", "module"], child=[power_button()])
+    return Widget.Box(
+        css_classes=["right_box", "module"],
+        spacing=5,
+        child=[volume_button(), power_button()],
+    )
 
 
 def bar(monitor: Dict[str, int]) -> Widget.Window:

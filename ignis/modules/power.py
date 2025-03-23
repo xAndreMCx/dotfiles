@@ -5,17 +5,11 @@ import os
 app = IgnisApp.get_default()
 
 
-def power_button() -> Widget.Box:
-    return Widget.Box(
-        child=[
-            Widget.Button(
-                css_classes=["power_button"],
-                child=Widget.Icon(
-                    image="power-symbolic",
-                ),
-                on_click=lambda self: app.toggle_window("power_menu"),
-            )
-        ]
+def power_button() -> Widget.Button:
+    return Widget.Button(
+        css_classes=["power_button"],
+        child=Widget.Icon(image="power-symbolic"),
+        on_click=lambda self: app.toggle_window("power_menu"),
     )
 
 
@@ -25,7 +19,7 @@ def restart_button() -> Widget.Box:
         vertical=True,
         child=[
             Widget.Button(
-                child=Widget.Icon(image="audio-volume-high"),
+                child=Widget.Icon(image="restart-symbolic"),
                 on_click=lambda self: os.system("systemctl reboot"),
             ),
             Widget.Label(label="Restart"),
@@ -53,7 +47,7 @@ def lock_button() -> Widget.Box:
         vertical=True,
         child=[
             Widget.Button(
-                child=Widget.Icon(image="audio-volume-high"),
+                child=Widget.Icon(image="lock-symbolic"),
                 on_click=lambda self: print("hi"),
             ),
             Widget.Label(label="Lock"),
@@ -70,7 +64,7 @@ def power_menu() -> Widget.Window:
         popup=True,
         visible=False,
         child=Widget.Box(
-            css_classes=["power_menu"],
+            css_classes=["menu", "power_menu"],
             child=[lock_button(), restart_button(), shutdown_button()],
         ),
     )

@@ -2,8 +2,9 @@ from ignis.app import IgnisApp
 from ignis.app import Utils
 from ignis.services.hyprland import HyprlandService
 import json
-from modules.bar.bar import bar
-from modules.power.power import power_menu
+from modules.bar import bar
+from modules.power import power_menu
+from modules.volume import volume_menu
 
 app = IgnisApp.get_default()
 app.add_icons(f"{Utils.get_current_dir()}/icons")
@@ -24,3 +25,4 @@ for n in range(2):
     bar(MONITORS[n])
 
 power_menu()
+volume_menu()
