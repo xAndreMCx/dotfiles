@@ -168,6 +168,11 @@ return {
             },
           },
         },
+
+        tinymist = {
+          cmd = { 'tinymist', 'lsp' },
+          filetypes = { 'typst' },
+        },
       }
 
       -- Ensure the servers and tools above are installed
