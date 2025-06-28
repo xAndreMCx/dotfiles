@@ -30,7 +30,7 @@ def workspaces(monitor: Dict[str, int]) -> Widget.Box:
         css_classes=["workspaces"],
         child=[
             Widget.Button(
-                css_classes=["workspace_button"],
+                css_classes=["workspace_button", "bar_button"],
                 child=Widget.Label(label=str(i)),
                 on_click=lambda x: workspace_dispatch(monitor, int(x.child.label)),
             )
@@ -42,8 +42,9 @@ def workspaces(monitor: Dict[str, int]) -> Widget.Box:
 def window_title() -> Widget.Label:
     return Widget.Label(
         hexpand=True,
-        halign="end",
+        halign="center",
         css_classes=["window_title"],
+        label="Hyprland",
     )
 
 
@@ -54,48 +55,50 @@ def update_window_title(self: Widget.Label, monitor: Dict[str, int]) -> None:
 
 
 def left_box(monitor: Dict[str, int]) -> Widget.Box:
+    arch_logo = Widget.Icon(css_classes=["arch_logo"], image="arch-symbolic")
+
+    return Widget.Box(
+        css_classes=["left_box", "module"],
+        child=[arch_logo, workspaces(monitor)],
+    )
+
+
+def center_box(monitor: Dict[str, int]) -> Widget.Box:
     title = window_title()
     hyprland.connect(
         "notify::active-window",
         lambda x, y: update_window_title(title, monitor),
     )
 
-    arch_logo = Widget.Icon(css_classes=["arch_logo"], image="arch-symbolic")
-
-    return Widget.Box(
-        css_classes=["left_box", "module"],
-        child=[arch_logo, workspaces(monitor), title],
-    )
-
-
-def center_box() -> Widget.Box:
-    date_time = datetime()
-    Utils.Poll(1000, lambda x: update_datetime(date_time))
-    return Widget.Box(css_classes=["center_box", "module"], child=[date_time])
+    return Widget.Box(css_classes=["center_box", "module"], child=[title])
 
 
 def right_box() -> Widget.Box:
+    date_time = datetime()
+    Utils.Poll(1000, lambda x: update_datetime(date_time))
+
     return Widget.Box(
         css_classes=["right_box", "module"],
         spacing=5,
-        child=[volume_button(), power_button()],
+        child=[
+            volume_button(),
+            date_time,
+            power_button(),
+        ],
     )
 
 
 def bar(monitor: Dict[str, int]) -> Widget.Window:
     bar = Widget.Window(
-        namespace=f"bar_monitor{monitor}",
+        namespace=f"bar_monitor{monitor['id']}",
         monitor=monitor["hyprland_id"],
         anchor=["top", "left", "right"],
         exclusivity="exclusive",
         layer="top",
-        margin_left=10,
-        margin_right=10,
-        margin_top=3,
         child=Widget.CenterBox(
             css_classes=["bar"],
             start_widget=left_box(monitor),
-            center_widget=center_box(),
+            center_widget=center_box(monitor),
             end_widget=right_box(),
         ),
     )

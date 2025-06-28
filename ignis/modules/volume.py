@@ -12,8 +12,8 @@ def volume_button() -> Widget.Button:
     return Widget.Button(
         hexpand=True,
         halign="end",
-        css_classes=["volume_button"],
-        child=Widget.Icon(image="audio-volume-high"),
+        css_classes=["volume_button", "bar_button"],
+        child=Widget.Icon(image="audio-volume-high-symbolic"),
         on_click=lambda self: app.toggle_window("volume_menu"),
     )
 

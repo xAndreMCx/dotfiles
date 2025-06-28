@@ -7,8 +7,9 @@ app = IgnisApp.get_default()
 
 def power_button() -> Widget.Button:
     return Widget.Button(
-        css_classes=["power_button"],
-        child=Widget.Icon(image="power-symbolic"),
+        css_classes=["power_button", "bar_button"],
+        child=Widget.Icon(image="system-shutdown-symbolic"),
+        # child=Widget.Label(css_classes=["nf_icon"], label="⏻"),
         on_click=lambda self: app.toggle_window("power_menu"),
     )
 

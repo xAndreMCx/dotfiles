@@ -1,29 +1,43 @@
+@use 'sass:color';
 @import "./colors.scss";
 
-$bar_height: 24px;
-$bar_border_width: 2px; // same as hyprland borders TODO: make use of bombadil's variables to set this
-$font_size: 12px;
-$icon_size: 14px;
+$bar_height: 22px;
+$bar_border_width: 2px; // same as hyprland borders  TODO: make use of bombadil's variables to set this
+$font_size: 12px; // smaller than 12 breaks the icons (dont align properly)
+$icon_size: 12px;
+$alpha_value: 0.6;
 
 @mixin borders ($border_radius) {
   border-radius: $border_radius;
-  border-width: $bar_border_width;
-  border-style: solid;
-  border-color: $overlay1;
+  // border-width: $bar_border_width;
+  // border-style: solid;
+  // border-color: change-color($lavender, $alpha: $alpha_value);
+}
+
+@mixin buttons_sizing () {
+  min-width: $bar_height;
 }
 
 * {
   all: unset;
   margin: 0;
   padding: 0;
-  font-family: "JetBrains Mono Nerd Font, Symbols Nerd Font Mono";
+  font-family: "JetBrains Mono Nerd Font";
   font-weight: bold;
   font-size: $font_size;
   color: $text;
 }
 
+.nf_icon {
+  font-family: "JetBrains Mono Nerd Font Propo";
+}
+
 .bar {
   min-height: $bar_height;
+  // background-color: change-color($mantle, $alpha: $alpha_value - 0.2);
+  background-color: $crust;
+  border-bottom: 2px solid change-color($lavender, $alpha: $alpha_value - 0.2);
+  // padding: 2px 0px 2px 0px;
 }
 
 .module {
@@ -33,15 +47,24 @@ $icon_size: 14px;
 }
 
 .left_box {
-  min-width: 400px;
+  // margin-left: 10px;
+  // min-width: 400px;
 }
 
 .center_box {
-  min-width: 250px;
+  min-width: 350px;
+  // background-color: change-color($base, $alpha: $alpha_value);
+  // border-radius: $bar_height;
+  padding: 0px 10px 0px 10px;
 }
 
 .right_box {
   min-width: 400px;
+}
+
+.bar_button {
+  min-width: $bar_height;
+  border-radius: $bar_height;
 }
 
 .workspaces {
@@ -51,19 +74,15 @@ $icon_size: 14px;
   margin: 0px 5px;
 }
 
-.workspace_button {
-  min-width: $bar_height - (2 * $bar_border_width);
+.workspace_button:hover {
 
-  &:hover {
+  background-color: $lavender;
 
-    border-radius: 10px;
-    background-color: $lavender;
-
-    label {
-      color: $mantle;
-    }
+  label {
+    color: $mantle;
   }
 }
+
 
 // .workspace_btn_active {
 //   background-color: $blue;
@@ -90,9 +109,7 @@ $icon_size: 14px;
   color: #1793d1;
 }
 
-.window_title {
-  color: $overlay2;
-}
+.window_title {}
 
 .menu {
   @include borders(10px);
@@ -105,8 +122,8 @@ $icon_size: 14px;
 
 .power_button {
   -gtk-icon-size: $icon_size;
-  min-width: $bar_height - (2 * $bar_border_width);
-  border-radius: 10px;
+  min-width: $bar_height;
+  border-radius: $bar_height;
   // background-color: $maroon;
 
   &:hover {
@@ -155,8 +172,8 @@ $icon_size: 14px;
 
 .volume_button {
   -gtk-icon-size: $icon_size;
-  min-width: $bar_height - (2 * $bar_border_width);
-  border-radius: 10px;
+  min-width: $bar_height;
+  border-radius: $bar_height;
 
   &:hover {
     background-color: $lavender;
