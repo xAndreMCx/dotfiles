@@ -1,0 +1,5 @@
+device = "desktop"
+bombadil_cmd = "bombadil watch -p desktop"
+monitor_1 = "DP-1"
+monitor_2 = "HDMI-A-1"
+

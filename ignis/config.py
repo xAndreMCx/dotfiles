@@ -21,7 +21,7 @@ MONITORS = [
     for item in monitors_list
 ]
 
-for n in range(2):
+for n in range(len(monitors_list)):
     bar(MONITORS[n])
 
 power_menu()

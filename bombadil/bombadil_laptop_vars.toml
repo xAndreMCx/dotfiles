@@ -1,0 +1,4 @@
+device = "laptop"
+bombadil_cmd = "bombadil watch -p laptop"
+monitor_1 = "eDP-1"
+monitor_2 = "eDP-1"

@@ -1,8 +1,6 @@
 #!/bin/bash
 
 hyprpaper &
-# ags &
 ignis init &
 wl-paste --watch cliphist store &
-bombadil watch -p desktop &
-
+"{{bombadil_cmd}}" &

@@ -7,8 +7,26 @@ gitconfig = {source = "git/gitconfig", target = ".gitconfig"}
 nvim = {source = "nvim", target = ".config/nvim"}
 starship = {source = "starship.toml", target = ".config/starship.toml"}
 yazi = {source = "yazi", target = ".config/yazi"}
+bombadil = {source = "bombadil.toml", target = ".config/bombadil.toml"}
+bombadil_vars = {source = "bombadil", target = ".config/bombadil"}
+
+[profiles.desktop]
+vars = ["bombadil/bombadil_desktop_vars.toml"]
 
 [profiles.desktop.dots]
+ags = {source = "ags", target = ".config/ags"}
+dunst = {source = "dunst", target = ".config/dunst"}
+hyprland = {source = "hyprland", target = ".config/hypr"}
+kitty = {source = "kitty", target = ".config/kitty"}
+rofi = {source = "rofi", target = ".config/rofi"}
+wezterm = {source = "wezterm", target = ".config/wezterm"}
+ignis = {source = "ignis", target = ".config/ignis"}
+
+
+[profiles.laptop]
+vars = ["bombadil/bombadil_laptop_vars.toml"]
+
+[profiles.laptop.dots]
 ags = {source = "ags", target = ".config/ags"}
 dunst = {source = "dunst", target = ".config/dunst"}
 hyprland = {source = "hyprland", target = ".config/hypr"}
