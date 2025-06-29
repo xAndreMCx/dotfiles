@@ -83,17 +83,16 @@ $alpha_value: 0.6;
   }
 }
 
+.workspace_btn_active {
+  background-color: $blue;
 
-// .workspace_btn_active {
-//   background-color: $blue;
-//
-//   label {
-//     color: $mantle;
-//   }
-//
-//   border-radius: $bar_height - (2 * $bar_border_width);
-// }
-//
+  label {
+    color: $mantle;
+  }
+
+  border-radius: $bar_height - (2 * $bar_border_width);
+}
+
 // .workspace_btn_empty {
 //   label {
 //     color: $overlay2;

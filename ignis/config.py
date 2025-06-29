@@ -15,7 +15,7 @@ monitors_list = json.loads(hyprland.send_command("j/monitors"))
 MONITORS = [
     {
         "hyprland_id": item["id"],
-        "id": 0 if item["name"] == "DP-1" else 1,
+        "id": 0 if item["name"] in ["DP-1", "eDP-1"] else 1, # FIX: ids to allow for more monitors
         "name": item["name"],
     }
     for item in monitors_list
