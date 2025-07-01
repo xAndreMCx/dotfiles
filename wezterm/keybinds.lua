@@ -14,12 +14,12 @@ local config = {
       action = wezterm.action.CloseCurrentPane({ confirm = false }),
     },
     {
-      key = 'h',
+      key = 'v',
       mods = 'LEADER',
       action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
     },
     {
-      key = 'v',
+      key = 'h',
       mods = 'LEADER',
       action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' }),
     },
