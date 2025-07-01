@@ -4,7 +4,8 @@
 $bar_height: 22px;
 $bar_border_width: 2px; // same as hyprland borders  TODO: make use of bombadil's variables to set this
 $font_size: 12px; // smaller than 12 breaks the icons (dont align properly)
-$icon_size: 12px;
+// $icon_size: 12px;
+$icon_size: 1.2em;
 $alpha_value: 0.6;
 
 @mixin borders ($border_radius) {
@@ -26,6 +27,10 @@ $alpha_value: 0.6;
   font-weight: bold;
   font-size: $font_size;
   color: $text;
+}
+
+image {
+  -gtk-icon-size: $icon_size;
 }
 
 .nf_icon {
@@ -169,8 +174,33 @@ $alpha_value: 0.6;
   }
 }
 
+.wifi_button {
+  min-width: $bar_height;
+  border-radius: $bar_height;
+
+  &:hover {
+    background-color: $lavender;
+
+    image {
+      color: $mantle;
+    }
+  }
+}
+
+.bluetooth_button {
+  min-width: $bar_height;
+  border-radius: $bar_height;
+
+  &:hover {
+    background-color: $lavender;
+
+    image {
+      color: $mantle;
+    }
+  }
+}
+
 .volume_button {
-  -gtk-icon-size: $icon_size;
   min-width: $bar_height;
   border-radius: $bar_height;
 

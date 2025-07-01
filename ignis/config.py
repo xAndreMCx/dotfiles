@@ -1,8 +1,9 @@
 from ignis.app import IgnisApp
 from ignis.app import Utils
 from ignis.services.hyprland import HyprlandService
+
 import json
-from modules.bar import bar
+from modules.bar.bar import bar_window
 from modules.power import power_menu
 from modules.volume import volume_menu
 
@@ -15,14 +16,16 @@ monitors_list = json.loads(hyprland.send_command("j/monitors"))
 MONITORS = [
     {
         "hyprland_id": item["id"],
-        "id": 0 if item["name"] in ["DP-1", "eDP-1"] else 1, # FIX: ids to allow for more monitors
+        "id": 0
+        if item["name"] in ["DP-1", "eDP-1"]
+        else 1,  # FIX: ids to allow for more monitors
         "name": item["name"],
     }
     for item in monitors_list
 ]
 
 for n in range(len(monitors_list)):
-    bar(MONITORS[n])
+    bar_window(MONITORS[n])
 
 power_menu()
 volume_menu()

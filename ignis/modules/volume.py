@@ -56,11 +56,12 @@ def main_volume() -> Widget.Box:
 def volume_menu() -> Widget.Window:
     menu = Widget.Window(
         namespace="volume_menu",
+        dynamic_input_region=True,
         anchor=["top", "right"],
         exclusivity="normal",
         layer="top",
-        kb_mode="on_demand",
-        popup=True,
+        kb_mode="none",
+        popup=False,
         visible=False,
         margin_right=10,
         margin_top=10,
