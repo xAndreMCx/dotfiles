@@ -29,3 +29,5 @@ for n in range(len(monitors_list)):
 
 power_menu()
 volume_menu()
+wifi_menu()
+bluetooth_menu()
