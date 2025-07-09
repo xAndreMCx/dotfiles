@@ -13,7 +13,8 @@ def volume_button() -> Widget.Button:
         hexpand=True,
         halign="end",
         css_classes=["volume_button", "bar_button"],
-        child=Widget.Icon(image="audio-volume-high-symbolic"),
+        child=Widget.Icon(image=speaker.bind("icon_name")),
+        # child=Widget.Icon(image=audio.streams[0].icon_name),
         on_click=lambda self: app.toggle_window("volume_menu"),
     )
 
@@ -53,6 +54,39 @@ def main_volume() -> Widget.Box:
     )
 
 
+def main_mic() -> Widget.Box:
+    return Widget.Box(
+        hexpand=True,
+        css_classes=["volume_menu_entry"],
+        child=[
+            Widget.Button(
+                child=Widget.Icon(image=mic.bind("icon_name")),
+                on_click=lambda x: mic.set_is_muted(not mic.is_muted),
+            ),
+            Widget.Scale(
+                hexpand=True,
+                value=mic.bind_many(
+                    ["volume", "is_muted"],
+                    lambda mic, is_muted: 0 if is_muted or mic is None else mic,
+                ),
+                min=0,
+                max=100,
+                on_change=lambda self: mic.set_volume(self.value),
+                step=1,
+                vertical=False,
+            ),
+            Widget.Label(
+                label=mic.bind_many(
+                    ["volume", "is_muted"],
+                    lambda mic, is_muted: "0%"
+                    if is_muted or mic is None
+                    else f"{mic}%",
+                )
+            ),
+        ],
+    )
+
+
 def volume_menu() -> Widget.Window:
     menu = Widget.Window(
         namespace="volume_menu",
@@ -63,8 +97,12 @@ def volume_menu() -> Widget.Window:
         kb_mode="none",
         popup=False,
         visible=False,
-        margin_right=10,
-        margin_top=10,
-        child=Widget.Box(css_classes=["menu", "volume_menu"], child=[main_volume()]),
+        margin_right=100,
+        margin_top=2,
+        child=Widget.Box(
+            css_classes=["menu", "volume_menu"],
+            vertical=True,
+            child=[main_volume(), main_mic()],
+        ),
     )
     return menu
