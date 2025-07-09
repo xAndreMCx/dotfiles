@@ -1,5 +1,5 @@
 from ignis.widgets import Widget
-from ignis.utils import Utils
+from ignis import utils
 from ignis.services.hyprland import HyprlandService
 from typing import Dict
 
@@ -33,7 +33,7 @@ def center_box(monitor: Dict[str, int]) -> Widget.Box:
 
 def right_box() -> Widget.Box:
     date_time = datetime()
-    Utils.Poll(1000, lambda x: update_datetime(date_time))
+    utils.Poll(1000, lambda x: update_datetime(date_time))
 
     return Widget.Box(
         css_classes=["right_box", "module"],
