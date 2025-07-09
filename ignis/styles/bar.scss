@@ -1,0 +1,147 @@
+@use 'sass:color';
+@use "colors";
+
+$bar_height: 22px;
+$bar_border_width: 2px; // same as hyprland borders  TODO: make use of bombadil's variables to set this
+$alpha_value: 0.6;
+$icon_size: 1.2em;
+
+@mixin borders ($border_radius) {
+  border-radius: $border_radius;
+  border-width: $bar_border_width;
+  border-style: solid;
+  border-color: color.change(colors.$lavender, $alpha: $alpha_value);
+}
+
+.bar {
+  min-height: $bar_height;
+  background-color: colors.$crust;
+  border-bottom: 3px solid color.change(colors.$lavender, $alpha: $alpha_value - 0.2);
+}
+
+.module {
+  border-radius: $bar_height;
+  padding: 0px 10px;
+}
+
+.left_box {
+  padding-left: 5px;
+}
+
+.center_box {
+  background: colors.$base;
+  min-width: 350px;
+}
+
+.right_box {
+  min-width: 400px;
+  padding-right: 5px;
+}
+
+.bar_button {
+  min-width: $bar_height;
+  border-radius: $bar_height;
+}
+
+.workspaces {
+  background-color: colors.$surface0;
+  // background-color: colors.$base;
+  border-radius: $bar_height;
+  padding: 0px 5px;
+  margin: 0px 5px;
+}
+
+.workspace_button:hover {
+  background-color: colors.$lavender;
+
+  label {
+    color: colors.$mantle;
+  }
+}
+
+.workspace_btn_active {
+  background-color: colors.$blue;
+
+  label {
+    color: colors.$mantle;
+  }
+}
+
+// .workspace_btn_empty {
+//   label {
+//     color: $overlay2;
+//   }
+// }
+//
+// .workspace_btn_active.workspace_btn_empty label {
+//   color: $mantle;
+// }
+
+.arch_logo {
+  -gtk-icon-size: $icon_size;
+  color: #1793d1;
+}
+
+.sys_info {
+  background-color: colors.$surface0;
+  border-radius: $bar_height;
+  padding: 0px 5px;
+  margin: 0px 5px;
+}
+
+.wifi_button {
+  min-width: $bar_height;
+  border-radius: $bar_height;
+
+  &:hover {
+    background-color: colors.$lavender;
+
+    image {
+      color: colors.$mantle;
+    }
+  }
+}
+
+.bluetooth_button {
+  min-width: $bar_height;
+  border-radius: $bar_height;
+
+  &:hover {
+    background-color: colors.$lavender;
+
+    image {
+      color: colors.$mantle;
+    }
+  }
+}
+
+.volume_button {
+  min-width: $bar_height;
+  border-radius: $bar_height;
+
+  &:hover {
+    background-color: colors.$lavender;
+
+    image {
+      color: colors.$mantle;
+    }
+  }
+}
+
+.power_button {
+  // -gtk-icon-size: $icon_size;
+  // min-width: $bar_height;
+  // border-radius: $bar_height;
+
+  image {
+    color: colors.$red;
+  }
+
+  &:hover {
+    background-color: colors.$red;
+
+    image {
+      color: colors.$mantle;
+    }
+  }
+}

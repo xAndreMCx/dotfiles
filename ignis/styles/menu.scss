@@ -1,0 +1,88 @@
+@use "colors";
+
+.menu {
+  border-radius: 10px;
+  background-color: colors.$base;
+  border: solid 2px colors.$sky;
+
+  // &:hover {
+  //   border-color: colors.$lavender;
+  // }
+}
+
+.power_menu {
+  $width: 500px;
+  $height: 130px;
+  min-width: $width;
+  min-height: $height;
+}
+
+.power_menu_entry {
+  $size: 100px;
+  border-color: colors.$surface0;
+  min-width: $size;
+  min-height: $size;
+  // margin-right: 22px; // (power menu $width - 4*$size) / 3;
+  margin: 15px 22px 15px 0px;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+  image {
+    -gtk-icon-size: 100px;
+  }
+
+  button:hover {
+    background-color: colors.$overlay1;
+    border-radius: 10px;
+    // border-width: 0px;
+  }
+}
+
+.wifi_menu {
+  $width: 500px;
+  $height: 100px;
+  min-width: $width;
+  min-height: $height;
+}
+
+.volume_menu {
+  $width: 400px;
+  $height: 100px;
+  min-width: $width;
+  min-height: $height;
+}
+
+.volume_menu_entry {
+  $width: 100px;
+  $height: 20px;
+  border-color: colors.$surface0;
+  min-width: $width;
+  min-height: $height;
+  margin: 15px 15px 15px 15px;
+
+
+  scale trough {
+    background-color: colors.$surface2;
+    border-radius: 10px;
+    min-height: 10px;
+    min-width: 150px;
+    margin: 0px 20px 0px 20px;
+  }
+
+  scale trough highlight {
+    background-color: colors.$lavender;
+    border-radius: 10px;
+  }
+
+  button {
+    min-width: $height;
+    border-radius: $height;
+    // border-width: 0px;
+
+    &:hover {
+      background-color: colors.$overlay1;
+    }
+  }
+}
