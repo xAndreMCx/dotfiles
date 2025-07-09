@@ -34,3 +34,4 @@ kitty = {source = "kitty", target = ".config/kitty"}
 rofi = {source = "rofi", target = ".config/rofi"}
 wezterm = {source = "wezterm", target = ".config/wezterm"}
 ignis = {source = "ignis", target = ".config/ignis"}
+quickshell = {source = "quickshell", target = ".config/quickshell"}
