@@ -1,0 +1,23 @@
+[colors]
+background_primary = "#1E1E2E"     # Base: Main background
+background_secondary = "#313244"   # Surface0: Secondary background for cards/panels
+background_tertiary = "#45475A"    # Surface1: Tertiary background for smaller elements
+background_inverse = "#CDD6F4"     # Text: Opposite for contrast (e.g., light text)
+text_primary = "#CDD6F4"           # Text: Main text color
+text_secondary = "#BAC2DE"         # Subtext1: Secondary text for subtitles
+text_accent = "#89B4FA"            # Blue: Emphasized text (e.g., links)
+text_disabled = "#6C7086"          # Overlay0: Disabled/inactive text
+text_inverse = "#181825"           # Mantle
+accent_primary = "#89B4FA"         # Blue: Primary accent for buttons/links
+accent_secondary = "#74C7EC"       # Sapphire: Secondary accent for hover states
+border_primary = "#585B70"         # Surface2: Main border color
+border_secondary = "#7F849C"       # Overlay1: Subtler border color
+success = "#A6E3A1"                # Green: Success states
+warning = "#FAB387"                # Peach: Warning states
+error = "#F38BA8"                  # Red: Error states
+info = "#89DCEB"                   # Sky: Informational messages
+focus = "#B4BEFE"                  # Lavender: Focus states (e.g., outlines)
+hover = "#9399B2"                  # Overlay2: Hover states
+active = "#CBA6F7"                 # Mauve: Active/pressed states
+surface = "#181825"                # Mantle: Neutral surface for modals/overlays
+shadow = "#11111B"                 # Crust: Shadow effects

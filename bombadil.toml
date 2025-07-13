@@ -11,7 +11,7 @@ bombadil = {source = "bombadil.toml", target = ".config/bombadil.toml"}
 bombadil_vars = {source = "bombadil", target = ".config/bombadil"}
 
 [profiles.desktop]
-vars = ["bombadil/bombadil_desktop_vars.toml"]
+vars = ["bombadil/desktop_vars.toml"]
 
 [profiles.desktop.dots]
 ags = {source = "ags", target = ".config/ags"}
@@ -24,7 +24,7 @@ ignis = {source = "ignis", target = ".config/ignis"}
 
 
 [profiles.laptop]
-vars = ["bombadil/bombadil_laptop_vars.toml"]
+vars = ["bombadil/laptop_vars.toml"]
 
 [profiles.laptop.dots]
 ags = {source = "ags", target = ".config/ags"}
@@ -35,3 +35,6 @@ rofi = {source = "rofi", target = ".config/rofi"}
 wezterm = {source = "wezterm", target = ".config/wezterm"}
 ignis = {source = "ignis", target = ".config/ignis"}
 quickshell = {source = "quickshell", target = ".config/quickshell"}
+
+[profiles.catppuccin_mocha]
+vars = ["bombadil/catppuccin_mocha.toml"]
