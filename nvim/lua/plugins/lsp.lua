@@ -173,6 +173,11 @@ return {
           cmd = { 'tinymist', 'lsp' },
           filetypes = { 'typst' },
         },
+
+        qmlls = {
+          cmd = { 'qmlls6', '-E' },
+          filetypes = { 'qml', 'qmljs' },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -245,6 +250,8 @@ return {
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+
+        qmlls = { 'qmlformat' },
       },
     },
   },
