@@ -23,15 +23,16 @@ Scope {
     RowLayout {
       id: row
 
-      property int space: 10
-      property int margin: 5
+      property int space: 5
+      property int margin: 15
 
       width: parent.width
       height: parent.height
 
       RowLayout {
         id: leftBar
-        spacing: parent.space
+        // spacing: parent.space
+        spacing: 5
         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
         Layout.leftMargin: parent.margin
         Layout.preferredWidth: Math.max(leftBar.implicitWidth, rightBar.implicitWidth)
@@ -78,7 +79,7 @@ Scope {
           color: Config.colors.text
         }
 
-        // power
+        PowerButton {}
       }
     }
   }
@@ -101,6 +102,7 @@ Scope {
     RoundCorner {
       corner: RoundCorner.CornerEnum.TopLeft
       size: parent.height
+      color: "{{colors.surface}}"
 
       anchors {
         left: parent.left
@@ -110,6 +112,7 @@ Scope {
     RoundCorner {
       corner: RoundCorner.CornerEnum.TopRight
       size: parent.height
+      color: "{{colors.surface}}"
 
       anchors {
         right: parent.right
@@ -130,6 +133,7 @@ Scope {
 
     RoundCorner {
       corner: RoundCorner.CornerEnum.BottomLeft
+      color: "{{colors.surface}}"
       size: parent.height
 
       anchors {
@@ -140,6 +144,7 @@ Scope {
     RoundCorner {
       corner: RoundCorner.CornerEnum.BottomRight
       size: parent.height
+      color: "{{colors.surface}}"
 
       anchors {
         right: parent.right
