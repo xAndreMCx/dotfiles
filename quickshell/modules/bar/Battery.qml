@@ -50,13 +50,6 @@ Item {
   //   return "Idle";
   // }
 
-  // function batIcon(percentage, charging) {
-  //   const range = Math.floor(percentage * 10) * 10;
-  //   const rangeStr = ("" + range).padStart(2, '0');
-  //   let icon = `root:/icons/battery-${rangeStr}${charging ? "-charging" : ""}.svg`;
-  //   return icon;
-  // }
-
   function batIcon(percentage, charging) {
     percentage = percentage * 100;
     if (charging) {
@@ -100,9 +93,9 @@ Item {
     anchors.fill: parent
     hoverEnabled: true
 
-    ToolTip.visible: containsMouse
-    ToolTip.text: toolTipText()
-    ToolTip.delay: 100
+    // ToolTip.visible: containsMouse
+    // ToolTip.text: toolTipText()
+    // ToolTip.delay: 100
   }
 
   RowLayout {
