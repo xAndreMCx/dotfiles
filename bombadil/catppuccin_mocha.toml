@@ -21,3 +21,4 @@ hover = "#9399B2"                  # Overlay2: Hover states
 active = "#CBA6F7"                 # Mauve: Active/pressed states
 surface = "#181825"                # Mantle: Neutral surface for modals/overlays
 shadow = "#11111B"                 # Crust: Shadow effects
+red = "#F38BA8"
