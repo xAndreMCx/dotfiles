@@ -1,12 +1,10 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
-import Quickshell.Widgets
 import Quickshell
 import Quickshell.Services.UPower
-import QtQuick.Effects
 
 import "../../"
+import "root:/modules/common"
 
 Item {
   id: root
@@ -52,41 +50,91 @@ Item {
   //   return "Idle";
   // }
 
+  // function batIcon(percentage, charging) {
+  //   const range = Math.floor(percentage * 10) * 10;
+  //   const rangeStr = ("" + range).padStart(2, '0');
+  //   let icon = `root:/icons/battery-${rangeStr}${charging ? "-charging" : ""}.svg`;
+  //   return icon;
+  // }
+
   function batIcon(percentage, charging) {
-    const range = Math.floor(percentage * 10) * 10;
-    const rangeStr = ("" + range).padStart(2, '0');
-    let icon = `root:/icons/battery-${rangeStr}${charging ? "-charging" : ""}.svg`;
-    return icon;
+    percentage = percentage * 100;
+    if (charging) {
+      if (percentage <= 20) {
+        return "battery_charging_20";
+      } else if (percentage <= 30) {
+        return "battery_charging_30";
+      } else if (percentage <= 50) {
+        return "battery_charging_50";
+      } else if (percentage <= 60) {
+        return "battery_charging_60";
+      } else if (percentage <= 80) {
+        return "battery_charging_80";
+      } else if (percentage <= 90) {
+        return "battery_charging_90";
+      } else {
+        return "battery_charging_full";
+      }
+    } else {
+      if (percentage < 5) {
+        return "battery_0_bar";
+      } else if (percentage <= 15) {
+        return "battery_1_bar";
+      } else if (percentage <= 30) {
+        return "battery_2_bar";
+      } else if (percentage <= 45) {
+        return "battery_3_bar";
+      } else if (percentage <= 60) {
+        return "battery_4_bar";
+      } else if (percentage <= 75) {
+        return "battery_5_bar";
+      } else if (percentage <= 90) {
+        return "battery_6_bar";
+      } else {
+        return "battery_full";
+      }
+    }
   }
 
-  // MouseArea {
-  //   anchors.fill: parent
-  //   hoverEnabled: true
-  //
-  //   ToolTip.visible: containsMouse
-  //   ToolTip.text: toolTipText()
-  //   ToolTip.delay: 100
-  // }
+  MouseArea {
+    anchors.fill: parent
+    hoverEnabled: true
+
+    ToolTip.visible: containsMouse
+    ToolTip.text: toolTipText()
+    ToolTip.delay: 100
+  }
 
   RowLayout {
     id: row
-    spacing: 3
+    spacing: 0
 
-    IconImage {
-      id: icon
-      Layout.preferredHeight: implicitSize
-      Layout.preferredWidth: implicitSize
-
-      implicitSize: Config.bar_height
-      source: root.batIcon(root.battery.percentage, root.battery.state == UPowerDeviceState.Charging)
+    MaterialIcon {
+      text: root.batIcon(root.battery.percentage, root.battery.state == UPowerDeviceState.Charging)
+      color: "{{colors.text_primary}}"
+      iconSize: 18
     }
+    // IconImage {
+    //   id: icon
+    //   Layout.preferredHeight: implicitSize
+    //   Layout.preferredWidth: implicitSize
+    //
+    //   implicitSize: Config.bar_height
+    //   source: root.batIcon(root.battery.percentage, root.battery.state == UPowerDeviceState.Charging)
+    //
+    //   MultiEffect {
+    //     source: icon
+    //     anchors.fill: icon
+    //     colorization: 1
+    //     colorizationColor: "{{colors.text_primary}}"
+    //   }
+    // }
 
-    Label {
+    Text {
       text: `${Math.round(battery.percentage * 100)}%`
       color: Config.colors.text
       font.family: Config.font_family
       font.pixelSize: Config.font_size
-      Layout.alignment: Qt.AlignCenter
     }
   }
 }
