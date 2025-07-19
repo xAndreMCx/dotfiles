@@ -75,9 +75,6 @@ Scope {
         // bluetooth
         // volume
 
-        DateTime {
-          color: Config.colors.text
-        }
 
         PowerButton {}
       }
