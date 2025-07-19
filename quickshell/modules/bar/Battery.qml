@@ -6,6 +6,8 @@ import Quickshell.Services.UPower
 import "../../"
 import "root:/modules/common"
 
+// TODO: add a window that allow for power profiles, show time till fully charged and time left
+
 Item {
   id: root
 
@@ -35,22 +37,21 @@ Item {
   // }
   //
   // function toolTipText() {
-  //   console.log(battery.percentage);
-  //   if (modelData.timeToFull != 0) {
+  //   if (battery.timeToFull != 0) {
   //     // Charging
-  //     return `${formatSecs(modelData?.timeToFull)} until full`;
-  //   } else if (modelData.timeToEmpty != 0) {
+  //     return `${formatSecs(battery?.timeToFull)} until full`;
+  //   } else if (battery.timeToEmpty != 0) {
   //     // Discharging
-  //     return `${formatSecs(modelData.timeToEmpty)} until empty`;
-  //   } else if (modelData.percentage == 1) {
+  //     return `${formatSecs(battery.timeToEmpty)} until empty`;
+  //   } else if (battery.percentage == 1) {
   //     return "Full";
-  //   } else if (modelData.percentage == 0) {
+  //   } else if (battery.percentage == 0) {
   //     return "Empty";
   //   }
   //   return "Idle";
   // }
 
-  function batIcon(percentage, charging) {
+  function battery_icon(percentage, charging) {
     percentage = percentage * 100;
     if (charging) {
       if (percentage <= 20) {
@@ -89,45 +90,32 @@ Item {
     }
   }
 
-  MouseArea {
-    anchors.fill: parent
-    hoverEnabled: true
-
-    // ToolTip.visible: containsMouse
-    // ToolTip.text: toolTipText()
-    // ToolTip.delay: 100
-  }
-
   RowLayout {
     id: row
     spacing: 0
 
     MaterialIcon {
-      text: root.batIcon(root.battery.percentage, root.battery.state == UPowerDeviceState.Charging)
-      color: "{{colors.text_primary}}"
+      // FullyCharged since it only occurs when plugged in and is 100% (never get 100% without being plugged in)
+      icon: root.battery_icon(root.battery?.percentage, (root.battery?.state == UPowerDeviceState.Charging) || (root.battery?.state == UPowerDeviceState.FullyCharged))
       iconSize: 18
+      color: "{{colors.text_primary}}"
+      fill: 1
     }
-    // IconImage {
-    //   id: icon
-    //   Layout.preferredHeight: implicitSize
-    //   Layout.preferredWidth: implicitSize
-    //
-    //   implicitSize: Config.bar_height
-    //   source: root.batIcon(root.battery.percentage, root.battery.state == UPowerDeviceState.Charging)
-    //
-    //   MultiEffect {
-    //     source: icon
-    //     anchors.fill: icon
-    //     colorization: 1
-    //     colorizationColor: "{{colors.text_primary}}"
-    //   }
-    // }
 
     Text {
-      text: `${Math.round(battery.percentage * 100)}%`
+      text: `${Math.round(root.battery?.percentage * 100)}%`
       color: Config.colors.text
       font.family: Config.font_family
       font.pixelSize: Config.font_size
     }
+
+    // MouseArea {
+    //   anchors.fill: parent
+    //   hoverEnabled: true
+    //
+    //   // ToolTip.visible: containsMouse
+    //   // ToolTip.text: root.toolTipText()
+    //   // ToolTip.delay: 100
+    // }
   }
 }
