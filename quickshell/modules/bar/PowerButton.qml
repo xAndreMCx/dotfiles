@@ -1,10 +1,11 @@
-import Quickshell.Widgets
-import QtQuick
-import QtQuick.Effects
 import Quickshell
+import Quickshell.Io
 
-import "../../"
-import "root:/modules/common"
+import QtQuick
+
+import qs
+import qs.modules.common
+import qs.modules.power
 
 Rectangle {
   id: root
@@ -13,42 +14,13 @@ Rectangle {
   color: mouseArea.containsMouse ? "{{colors.red}}" : "transparent"
   radius: Config.bar_height
 
-  // Text {
-  //   id: icon
-  //   text: ""
-  //   font.pixelSize: Config.font_size + 2
-  //   font.family: "JetBrains Mono Nerd Font Propo"
-  //   anchors.centerIn: parent
-  //   color: mouseArea.containsMouse ? "{{colors.text_inverse}}" : "{{colors.red}}"
-  // }
-
   MaterialIcon {
     anchors.centerIn: parent
     text: "power_settings_new"
-    color: mouseArea.containsMouse ? "{{colors.text_inverse}}" : "{{colors.text_primary}}"
+    color: mouseArea.containsMouse ? "{{colors.text_inverse}}" : "{{colors.red}}"
     font.weight: Font.DemiBold
     iconSize: 16
   }
-  // IconImage {
-  //   id: icon
-  //   source: Quickshell.iconPath("system-shutdown-symbolic")
-  //   implicitSize: Config.icon_size
-  //   anchors.centerIn: parent
-  // }
-  //
-  // MultiEffect {
-  //   source: icon
-  //   anchors.fill: icon
-  //
-  //   colorization: 0
-  //   colorizationColor: mouseArea.containsMouse ? "{{colors.text_inverse}}" : "{{colors.red}}"
-  //   // saturation: -1
-  //   maskSource: IconImage {
-  //     source: Quickshell.iconPath("system-shutdown-symbolic")
-  //     implicitSize: Config.icon_size
-  //   }
-  //   maskEnabled: true
-  // }
 
   MouseArea {
     id: mouseArea
@@ -56,7 +28,11 @@ Rectangle {
     anchors.fill: parent
     hoverEnabled: true
 
-    // onClicked:
+    Process {
+      id: process
+      command: ["qs", "ipc", "call", "power_menu", "toggle"]
+    }
 
+    onClicked: process.startDetached()
   }
 }
