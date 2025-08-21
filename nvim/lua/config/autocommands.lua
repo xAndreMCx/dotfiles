@@ -1,11 +1,19 @@
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
+local augroup = vim.api.nvim_create_augroup('auto_group', { clear = true })
 
--- Highlight when yanking (copying) text
+-- Highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  desc = 'Highlight when yanking text',
+  group = augroup,
   callback = function()
     vim.highlight.on_yank()
+  end,
+})
+
+-- Auto resize splits when window resizes
+vim.api.nvim_create_autocmd('VimResized', {
+  desc = 'Resize split panes when vim resizes',
+  group = augroup,
+  callback = function()
+    vim.cmd('tabdo wincmd =')
   end,
 })
