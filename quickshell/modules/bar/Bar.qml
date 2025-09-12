@@ -1,9 +1,10 @@
 import Quickshell
-import QtQuick.Layouts
 import QtQuick
+import QtQuick.Layouts
+import Quickshell.Wayland
 
-import "../../"
-import "../"
+import qs
+import qs.modules.common
 
 Scope {
   id: root
@@ -13,6 +14,7 @@ Scope {
 
     color: Config.colors.base
     implicitHeight: Config.bar_height
+    WlrLayershell.namespace: "bar" // TODO: change this to a better name that allows for multi monitors
 
     anchors {
       left: true
@@ -23,26 +25,24 @@ Scope {
     RowLayout {
       id: row
 
-      property int space: 5
-      property int margin: 15
+      property int space: 10
+      property int margin: 10
 
       width: parent.width
       height: parent.height
 
       RowLayout {
         id: leftBar
-        // spacing: parent.space
-        spacing: 5
+        spacing: parent.space
         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
         Layout.leftMargin: parent.margin
-        Layout.preferredWidth: Math.max(leftBar.implicitWidth, rightBar.implicitWidth)
+        Layout.preferredWidth: Math.max(leftBar.width, rightBar.width)
 
         ArchIcon {}
         Workspaces {}
-      }
-
-      Item {
-        Layout.fillWidth: true
+        Item {
+          Layout.fillWidth: true
+        }
       }
 
       RowLayout {
@@ -57,24 +57,21 @@ Scope {
         // media
       }
 
-      Item {
-        Layout.fillWidth: true
-      }
-
       RowLayout {
         id: rightBar
         spacing: parent.space
         Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
         Layout.rightMargin: parent.margin
-        Layout.preferredWidth: Math.max(leftBar.implicitWidth, rightBar.implicitWidth)
+        Layout.preferredWidth: Math.max(leftBar.width, rightBar.width)
 
-        // system tray
-        // battery
-        Battery {}
-        // wifi
-        // bluetooth
-        // volume
+        Item {
+          Layout.fillWidth: true
+        }
+        // SysTray {}
 
+        SysInfo {}
+
+        DateTime {}
 
         PowerButton {}
       }
@@ -85,7 +82,7 @@ Scope {
     color: "transparent"
     exclusionMode: ExclusionMode.Ignore
     implicitHeight: 15
-
+    WlrLayershell.namespace: "test"
     margins {
       top: Config.bar_height
     }

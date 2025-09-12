@@ -7,8 +7,10 @@ return {
     build = function()
       require('typst-preview').update()
     end,
-    config = function()
-      require('typst-preview').setup()
-    end,
+
+    keys = {
+      { '<leader>tp', ':TypstPreviewToggle<CR>', 'n', desc = '[T]oggle Typst [p]review', silent = true },
+    },
   },
 }
+-- vim.keymap.set('n', '<leader>tp', ':TypstPreview', { desc = '[T]oggle Typst [p]review' })

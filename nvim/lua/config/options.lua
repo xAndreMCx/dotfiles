@@ -28,8 +28,18 @@ vim.opt.signcolumn = 'auto:2-9'
 -- vim.opt.colorcolumn = '120'
 vim.opt.wrap = false
 vim.opt.breakindent = true
-vim.opt.cmdheight = 1 -- Command line height
+vim.opt.cmdheight = 1
 vim.opt.showmode = false
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.INFO] = '',
+      [vim.diagnostic.severity.HINT] = '󰌵',
+    },
+  },
+})
 -- TODO: find out what these settings do
 -- vim.opt.showmatch = true
 -- vim.opt.matchtime = 2 -- ds
@@ -68,9 +78,9 @@ vim.opt.splitbelow = true
 --   'n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
 
 -- Folding
--- vim.opt.foldmethod = 'expr'
--- vim.wo.vim.foldexpr = 'v:lua.vim.lsp.foldexpr()'
--- vim.opt.foldlevel = 99
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+vim.opt.foldlevel = 99
 
 -- Command line completion
 vim.opt.wildmenu = true
@@ -83,3 +93,6 @@ vim.opt.wildignore:append({ '*.o', '*.obj', '*.pyc', '*.class', '*.jar' })
 -- Performance improvements
 vim.opt.redrawtime = 10000 -- ms
 vim.opt.maxmempattern = 20000 -- KB
+
+-- Spell Check
+vim.opt.spelllang = { 'en_gb', 'en_us' }

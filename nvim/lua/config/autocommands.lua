@@ -17,3 +17,11 @@ vim.api.nvim_create_autocmd('VimResized', {
     vim.cmd('tabdo wincmd =')
   end,
 })
+
+-- Enable spell check
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'markdown', 'text', 'tex', 'typst' },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})

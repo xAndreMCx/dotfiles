@@ -1,11 +1,9 @@
-import Quickshell
-import Quickshell.Io
-
 import QtQuick
+
+import Quickshell.Io
 
 import qs
 import qs.modules.common
-import qs.modules.power
 
 Rectangle {
   id: root

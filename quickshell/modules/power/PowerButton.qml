@@ -17,7 +17,7 @@ Item {
   }
 
   Rectangle {
-    radius: 15
+    radius: 10
     anchors.fill: parent
     color: mouseArea.containsMouse ? Config.colors.primary : "transparent"
 
@@ -25,7 +25,7 @@ Item {
       anchors.centerIn: parent
       MaterialIcon {
         icon: root.icon
-        iconSize: 48
+        iconSize: 64
         Layout.alignment: Qt.AlignHCenter
         color: mouseArea.containsMouse ? Config.colors.text_dark : Config.colors.text
         fill: root.fill

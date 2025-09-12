@@ -11,6 +11,7 @@ Rectangle {
   property int index
   property color workspace_color: Config.colors.primary
   property bool active: false
+  // property bool containsWindows: Hyprland.workspaces.values[index]
 
   Layout.preferredHeight: height
   Layout.preferredWidth: width
@@ -34,6 +35,6 @@ Rectangle {
     anchors.fill: parent
     hoverEnabled: true
 
-    onClicked: Hyprland.dispatch(`workspace ${index}`)
+    onClicked: Hyprland?.dispatch(`workspace ${index}`)
   }
 }

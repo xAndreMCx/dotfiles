@@ -12,7 +12,7 @@ Item {
   property color text_color: Config.colors.text
 
   implicitHeight: Config.bar_height
-  implicitWidth: rowLayout.width + margin * 2
+  implicitWidth: rowLayout.width + 2 * margin
 
   Rectangle {
     anchors.fill: parent
@@ -21,10 +21,9 @@ Item {
 
     RowLayout {
       id: rowLayout
+      anchors.centerIn: parent
 
-      Layout.fillHeight: true
       spacing: 0
-      x: margin
 
       Repeater {
         id: repeater
@@ -33,7 +32,7 @@ Item {
 
         Workspace {
           index: modelData + 1
-          active: modelData + 1 == Hyprland.focusedWorkspace.id
+          active: modelData + 1 == Hyprland?.focusedWorkspace?.id
         }
       }
     }

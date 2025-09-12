@@ -12,4 +12,5 @@ lazy.setup({
     backdrop = 40,
   },
   checker = { enabled = true },
+  rocks = { hererocks = false, enabled = false },
 })

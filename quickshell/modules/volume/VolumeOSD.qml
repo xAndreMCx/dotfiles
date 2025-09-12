@@ -43,6 +43,7 @@ Scope {
     active: root.showOsd
 
     PanelWindow {
+      visible: root.showOsd
       anchors.bottom: true
       margins.bottom: screen.height / 20
 

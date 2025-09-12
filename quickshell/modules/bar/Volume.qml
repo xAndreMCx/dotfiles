@@ -1,6 +1,9 @@
 import QtQuick
-import "root:/modules/common/"
-import "../../"
+
+import Quickshell.Io
+
+import qs
+import qs.modules.common
 
 Rectangle {
   id: root
@@ -23,6 +26,11 @@ Rectangle {
     anchors.fill: parent
     hoverEnabled: true
 
-    // onClicked:
+    Process {
+      id: process
+      command: ["qs", "ipc", "call", "volume_menu", "toggle"]
+    }
+
+    onClicked: process.startDetached()
   }
 }

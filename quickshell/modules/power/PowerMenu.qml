@@ -1,9 +1,11 @@
+import QtQuick
+import QtQuick.Layouts
+
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Io
-import QtQuick
-import QtQuick.Layouts
 import Quickshell.Hyprland
+
 import qs
 
 Scope {

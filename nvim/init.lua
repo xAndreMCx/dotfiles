@@ -24,5 +24,27 @@ require('config.keymaps')
 require('config.autocommands')
 require('config.lazy')
 
+require('lspconfig')['tinymist'].setup({ -- Alternatively, can be used `vim.lsp.config["tinymist"]`
+  on_attach = function(client, bufnr)
+    vim.keymap.set('n', '<leader>tt', function()
+      client:exec_cmd({
+        title = 'pin',
+        command = 'tinymist.pinMain',
+        arguments = { vim.api.nvim_buf_get_name(0) },
+      }, { bufnr = bufnr })
+    end, { desc = '[T]inymist [P]in', noremap = true })
+
+    vim.keymap.set('n', '<leader>tu', function()
+      client:exec_cmd({
+
+        title = 'unpin',
+
+        command = 'tinymist.pinMain',
+
+        arguments = { vim.v.null },
+      }, { bufnr = bufnr })
+    end, { desc = '[T]inymist [U]npin', noremap = true })
+  end,
+})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

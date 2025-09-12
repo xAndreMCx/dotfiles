@@ -1,8 +1,18 @@
 //@ progma UseQApplication
-//@ pragma IconTheme Adwaita
+
 import Quickshell
-import "./modules/bar"
+
+import qs.modules.bar
+import qs.modules.power
+import qs.modules.volume
+import qs.modules.network
 
 Scope {
   Bar {}
+
+  VolumeOSD {}
+
+  NetworkMenu {}
+  VolumeMenu {}
+  PowerMenu {}
 }
