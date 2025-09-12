@@ -11,13 +11,13 @@
     "separator": "  ",
     "key": {
       "type": "both",
-      "width": 15,
+      "width": 20,
       "paddingLeft": 0
     },
     "bar": {
-      "borderLeft": "[ ",
-      "borderRight": " ]",
-      "charTotal": "-",
+      "border.left": "[ ",
+      "border.right": " ]",
+      "char.total": "-",
       //"charElapsed": ""
       "width": 10
     },
