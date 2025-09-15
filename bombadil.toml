@@ -2,7 +2,7 @@ dotfiles_dir = ".dotfiles"
 
 [settings]
 prehooks = [ "notify-send \"Updating dots\""]
-posthooks = ["chmod +x ~/.config/scripts/spam_left_click.fish"]
+posthooks = ["chmod +x ~/.config/scripts/spam_click.py"]
 
 [settings.dots]
 fastfetch = {source = "fastfetch", target = ".config/fastfetch"}
