@@ -1,5 +1,9 @@
 dotfiles_dir = ".dotfiles"
 
+[settings]
+prehooks = [ "notify-send \"Updating dots\""]
+posthooks = ["chmod +x ~/.config/scripts/spam_left_click.fish"]
+
 [settings.dots]
 fastfetch = {source = "fastfetch", target = ".config/fastfetch"}
 fish = {source = "fish", target = ".config/fish"}
@@ -9,6 +13,7 @@ starship = {source = "starship.toml", target = ".config/starship.toml"}
 yazi = {source = "yazi", target = ".config/yazi"}
 bombadil = {source = "bombadil.toml", target = ".config/bombadil.toml"}
 bombadil_vars = {source = "bombadil", target = ".config/bombadil"}
+scripts = {source = "scripts", target = ".config/scripts"}
 
 [profiles.desktop]
 vars = ["bombadil/desktop_vars.toml"]
