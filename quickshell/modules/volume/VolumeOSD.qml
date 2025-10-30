@@ -70,7 +70,7 @@ Scope {
 
           MaterialIcon {
             icon: "volume_up"
-            iconSize: 30
+            iconSize: 24
             fill: 1
             color: Config.colors.text
           }
@@ -89,10 +89,20 @@ Scope {
                 bottom: parent.bottom
               }
 
-              implicitWidth: parent.width * (root.sink?.audio.volume ?? 0)
+              implicitWidth: parent.width * ((root.sink?.audio.volume ?? 0) / 1.5)
               radius: parent.radius
               color: Config.colors.primary
             }
+          }
+
+          Text {
+            text: Math.round(root.sink?.audio.volume * 100) + "%"
+            color: Config.colors.text
+            Layout.preferredWidth: 30
+            // Layout.alignment: Qt.AlignRight
+
+            font.family: Config.font_family
+            font.pixelSize: Config.font_size
           }
         }
       }

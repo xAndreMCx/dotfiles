@@ -3,6 +3,7 @@ import QtQuick.Layouts
 
 import qs
 import qs.modules.common
+import QtQuick.Controls
 
 Item {
   id: root
@@ -41,29 +42,49 @@ Item {
       }
     }
 
-    Rectangle {
-      color: "{{colors.background_secondary}}"
+    Slider {
+      id: slider
+      from: 0
+      value: 100
+      to: 150
+      stepSize: 1
       Layout.alignment: Qt.AlignCenter
-      implicitHeight: root.size - 10
-      Layout.fillWidth: true
-      radius: root.size - 10
+      Layout.preferredWidth: 280
 
-      Rectangle {
-        anchors.left: parent.left
-        color: Config.colors.primary
+      background: Rectangle {
+        implicitHeight: root.size - 10
+        implicitWidth: parent.width + handleRect.width
+        radius: root.size - 10
+        color: "{{colors.background_secondary}}"
+
+        Rectangle {
+          width: slider.visualPosition * slider.width
+          height: parent.height
+          color: Config.colors.primary
+          // radius: root.size - 10
+          topLeftRadius: root.size - 10
+          bottomLeftRadius: root.size - 10
+        }
+      }
+
+      handle: Rectangle {
+        id: handleRect
+        x: slider.visualPosition * parent.width - (handleRect.width / 2)
+        implicitWidth: root.size - 10
         implicitHeight: root.size - 10
         radius: root.size - 10
-        implicitWidth: parent.width * 0.9
+        color: Config.colors.text
       }
     }
 
     Text {
-      text: "90%"
+      text: slider.value + '%'
       color: Config.colors.text
       font.family: Config.font_family
       font.pixelSize: Config.font_size
       Layout.rightMargin: root.margins
       Layout.alignment: Qt.AlignCenter
+      Layout.preferredWidth: 30
     }
   }
 }

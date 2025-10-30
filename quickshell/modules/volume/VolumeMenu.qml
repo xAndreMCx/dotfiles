@@ -90,9 +90,9 @@ Scope {
               icon: "mic"
             }
 
-            Item {
-              Layout.fillHeight: true
-            }
+            // Item {
+            //   Layout.fillHeight: true
+            // }
           }
         }
       }
