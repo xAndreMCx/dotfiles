@@ -52,6 +52,7 @@ Scope {
       color: "transparent"
       WlrLayershell.layer: WlrLayer.Overlay
       exclusionMode: ExclusionMode.Normal
+      WlrLayershell.namespace: "VolumeOSD"
 
       mask: Region {}
 
