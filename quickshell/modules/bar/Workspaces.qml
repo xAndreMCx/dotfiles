@@ -8,7 +8,7 @@ Item {
   id: root
 
   property var target_screen
-  property int start_id: (target_screen && target_screen.index === {{monitor_1}}) ? 1 : 11
+  property int start_id: (target_screen && target_screen.name === "{{monitor_1}}") ? 1 : 11
   property int count: 10
   property color background_color: Config.colors.surface
   property int margin: 5
@@ -39,15 +39,15 @@ Item {
 
         Workspace {
           // modelData is index (0-9)
-          index: modelData + root.start_id
+          index: modelData + root.start_id 
           display_label: (modelData + 1).toString()
           monitor_name: root.target_screen.name
           active: {
             if (!root.active_on_this_monitor) return false;
-            return index == root.active_on_this_monitor.id - 1;
+            return index == root.active_on_this_monitor.id;
           }
           contains_windows: {
-            const ws = Hyprland.workspaces.get(index);
+            const ws = Hyprland.workspaces.values.find(w => w.id === index);
             return ws ? ws.windows > 0 : false;
           }
         }
