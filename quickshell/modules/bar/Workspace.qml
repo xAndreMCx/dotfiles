@@ -8,9 +8,11 @@ Rectangle {
   id: root
 
   property int index
+  property string monitor_name
+  property string display_label: index
   property color workspace_color: Config.colors.primary
   property bool active: false
-  property bool containsWindows: false
+  property bool contains_windows: false
 
   Layout.preferredHeight: height
   Layout.preferredWidth: width
@@ -32,7 +34,7 @@ Rectangle {
     font.family: Config.font_family
     font.pixelSize: Config.font_size
     font.weight: mouseArea.containsMouse ? Font.Bold : Font.Normal
-    text: index
+    text: display_label
   }
 
   MouseArea {

@@ -8,6 +8,8 @@ Item {
   id: root
 
   property var target_screen
+  property int start_id: (target_screen && target_screen.index === 0) ? 1 : 11
+  property int count: 10
   property color background_color: Config.colors.surface
   property int margin: 5
   property color text_color: Config.colors.text
@@ -33,13 +35,15 @@ Item {
 
       Repeater {
         id: repeater
-        model: 10
+        model: root.count
 
         Workspace {
           // modelData is index (0-9)
-          index: modelData + 1
+          index: modelData + root.start_id
+          display_label: (modelData + 1).toString()
+          monitor_name: root.target_screen.name
           active: root.active_on_this_monitor && (index == root.active_on_this_monitor.id)
-          containsWindows: {
+          contains_windows: {
             const ws = Hyprland.workspaces.get(index);
             return ws ? ws.windows > 0 : false;
           }
