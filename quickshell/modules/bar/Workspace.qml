@@ -2,19 +2,19 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Hyprland
 
-import "../../"
+import qs
 
-// TODO: maybe wrap this inside an Item (not sure about it yet)
 Rectangle {
   id: root
 
   property int index
   property color workspace_color: Config.colors.primary
   property bool active: false
-  // property bool containsWindows: Hyprland.workspaces.values[index]
+  property bool containsWindows: false
 
   Layout.preferredHeight: height
   Layout.preferredWidth: width
+
   color: (mouseArea.containsMouse || active) ? workspace_color : "transparent"
   height: Config.bar_height
   radius: Config.bar_height
@@ -22,7 +22,13 @@ Rectangle {
 
   Text {
     anchors.centerIn: parent
-    color: (mouseArea.containsMouse || active) ? Config.colors.text_dark : Config.colors.text
+
+    color: {
+      if (mouseArea.containsMouse || active) return Config.colors.text_dark;
+      if (root.containsWindows) return "#22FF11";
+      return Config.colors.text;
+    }
+
     font.family: Config.font_family
     font.pixelSize: Config.font_size
     font.weight: mouseArea.containsMouse ? Font.Bold : Font.Normal
@@ -34,6 +40,7 @@ Rectangle {
 
     anchors.fill: parent
     hoverEnabled: true
+    cursorShape: Qt.PointingHandCursor
 
     onClicked: Hyprland?.dispatch(`workspace ${index}`)
   }

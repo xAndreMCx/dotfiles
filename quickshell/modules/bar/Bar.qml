@@ -41,7 +41,9 @@ Scope {
         Layout.preferredWidth: Math.max(leftBar.width, rightBar.width)
 
         ArchIcon {}
-        Workspaces {}
+        Workspaces {
+          target_screen: root.modelData
+        }
         Item {
           Layout.fillWidth: true
         }
