@@ -1,11 +1,7 @@
 #!/bin/bash
 
 hyprpaper &
-{%- if device == "desktop" %}
-  ignis init &
-{% elif device == "laptop" %}
-  quickshell &
-{% endif -%}
+quickshell &
 wl-paste --watch cliphist store &
 {{bombadil_cmd}} &
 hyprctl dispatch workspace 1

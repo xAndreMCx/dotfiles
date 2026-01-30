@@ -19,26 +19,23 @@ scripts = {source = "scripts", target = ".config/scripts"}
 vars = ["bombadil/desktop_vars.toml"]
 
 [profiles.desktop.dots]
-ags = {source = "ags", target = ".config/ags"}
 dunst = {source = "dunst", target = ".config/dunst"}
 hyprland = {source = "hyprland", target = ".config/hypr"}
 kitty = {source = "kitty", target = ".config/kitty"}
 rofi = {source = "rofi", target = ".config/rofi"}
 wezterm = {source = "wezterm", target = ".config/wezterm"}
-ignis = {source = "ignis", target = ".config/ignis"}
+quickshell = {source = "quickshell", target = ".config/quickshell"}
 
 
 [profiles.laptop]
 vars = ["bombadil/laptop_vars.toml"]
 
 [profiles.laptop.dots]
-ags = {source = "ags", target = ".config/ags"}
 dunst = {source = "dunst", target = ".config/dunst"}
 hyprland = {source = "hyprland", target = ".config/hypr"}
 kitty = {source = "kitty", target = ".config/kitty"}
 rofi = {source = "rofi", target = ".config/rofi"}
 wezterm = {source = "wezterm", target = ".config/wezterm"}
-ignis = {source = "ignis", target = ".config/ignis"}
 quickshell = {source = "quickshell", target = ".config/quickshell"}
 
 [profiles.catppuccin_mocha]

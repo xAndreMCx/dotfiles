@@ -19,7 +19,9 @@ Rectangle {
     Network {}
     Bluetooth {}
     Volume {}
+    {%- if device == "laptop" %}
     Brightness {}
     Battery {}
+    {%- endif %}
   }
 }

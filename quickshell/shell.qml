@@ -5,14 +5,15 @@ import Quickshell
 import qs.modules.bar
 import qs.modules.power
 import qs.modules.volume
-import qs.modules.network
+
+// import qs.modules.network
 
 Scope {
   Bar {}
 
   VolumeOSD {}
 
-  NetworkMenu {}
+  // NetworkMenu {}
   VolumeMenu {}
   PowerMenu {}
 }
