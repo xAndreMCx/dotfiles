@@ -8,13 +8,15 @@ import qs.modules.common
 
 Scope {
   id: root
+  required property var modelData
 
   PanelWindow {
     id: bar
+    screen: root.modelData
 
     color: Config.colors.base
     implicitHeight: Config.bar_height
-    WlrLayershell.namespace: "bar" // TODO: change this to a better name that allows for multi monitors
+    WlrLayershell.namespace: "bar-" + root.modelData.name
 
     anchors {
       left: true
