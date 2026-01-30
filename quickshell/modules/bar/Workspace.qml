@@ -27,7 +27,7 @@ Rectangle {
 
     color: {
       if (mouseArea.containsMouse || active) return Config.colors.text_dark;
-      if (root.containsWindows) return "#22FF11";
+      if (root.contains_windows) return "#22FF11";
       return Config.colors.text;
     }
 

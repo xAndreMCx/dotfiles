@@ -17,10 +17,15 @@ Item {
   implicitHeight: Config.bar_height
   implicitWidth: rowLayout.width + 2 * margin
 
-  readonly property var active_on_this_monitor: {
-    if (!target_screen) return null;
-    const monitor = Hyprland.monitors.values.find(m => m.name === target_screen.name);
-    return monitor ? monitor.activeWorkspace : null;
+  Connections {
+    target: Hyprland
+
+    function onRawEvent(event) {
+      const triggers = ["openwindow", "closewindow", "movewindow", "destroywindow"];
+      if (triggers.includes(event.name)) {
+        Hyprland.refreshWorkspaces();
+      }
+    }
   }
 
   Rectangle {
@@ -43,12 +48,16 @@ Item {
           display_label: (modelData + 1).toString()
           monitor_name: root.target_screen.name
           active: {
-            if (!root.active_on_this_monitor) return false;
-            return index == root.active_on_this_monitor.id;
+            const monitor = Hyprland.monitorFor(target_screen)
+            return monitor && monitor.activeWorkspace && monitor.activeWorkspace.id === index;
           }
           contains_windows: {
             const ws = Hyprland.workspaces.values.find(w => w.id === index);
-            return ws ? ws.windows > 0 : false;
+
+            if (ws && ws.lastIpcObject && ws.lastIpcObject.windows !== undefined) {
+              return ws.lastIpcObject.windows > 0;
+            }
+            return false;
           }
         }
       }
