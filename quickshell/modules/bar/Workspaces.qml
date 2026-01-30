@@ -44,7 +44,7 @@ Item {
           monitor_name: root.target_screen.name
           active: {
             if (!root.active_on_this_monitor) return false;
-            return index == root.active_on_this_monitor.id;
+            return index == root.active_on_this_monitor.id - 1;
           }
           contains_windows: {
             const ws = Hyprland.workspaces.get(index);

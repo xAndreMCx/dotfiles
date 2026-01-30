@@ -44,6 +44,6 @@ Rectangle {
     hoverEnabled: true
     cursorShape: Qt.PointingHandCursor
 
-    onClicked: Hyprland?.dispatch(`workspace ${index}`)
+    onClicked: Hyprland?.dispatch(`workspace ${root.index + 1}`)
   }
 }
