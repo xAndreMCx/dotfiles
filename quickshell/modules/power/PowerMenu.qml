@@ -19,23 +19,35 @@ Scope {
     sourceComponent: PanelWindow {
       id: menu
       visible: menuLoader.active
-      // WlrLayershell.namespace: "power_menu"
-      color: "transparent"
+      screen: root.focusedScreen
+
+      anchors {
+        left: true
+        right: true
+        top: true
+        bottom: true
+      }
+      // color: "transparent"
+      color: Qt.rgba(0, 0, 0, 0.4)
+      WlrLayershell.namespace: "power_menu"
 
       // focusable: true
-      implicitHeight: root.focusedScreen?.height * root.menuSize
-      implicitWidth: root.focusedScreen?.height * (grid.columns / grid.rows) * root.menuSize
 
       Rectangle {
-        anchors.fill: parent
+        id: menuBox
+        anchors.centerIn: parent
         radius: Config.rounding
         color: "{{colors.background_primary}}"
         border.width: 2
         border.color: "{{colors.red}}"
 
+        width: root.focusedScreen ? (root.focusedScreen.height * (grid.columns / grid.rows) * root.menuSize) : 0
+        height: root.focusedScreen ? (root.focusedScreen.height * root.menuSize) : 0
+
         GridLayout {
           id: grid
-          anchors.centerIn: parent
+          anchors.fill: parent
+
           columns: 3
           rows: 2
           rowSpacing: 0
@@ -44,32 +56,32 @@ Scope {
           PowerButton {
             text: "Lock"
             icon: "lock"
-            // command: "systemctl reboot"
+            command: "hyprlock"
             fill: 1
 
             Layout.alignment: Qt.AlignCenter
-            implicitWidth: menu.width / grid.columns
-            implicitHeight: menu.height / grid.rows
+            implicitWidth: menuBox.width / grid.columns
+            implicitHeight: menuBox.height / grid.rows
           }
 
           PowerButton {
             text: "Sleep"
             icon: "dark_mode"
-            // command: "systemctl reboot"
+            command: "systemctl suspend"
 
             Layout.alignment: Qt.AlignCenter
-            implicitWidth: menu.width / grid.columns
-            implicitHeight: menu.height / grid.rows
+            implicitWidth: menuBox.width / grid.columns
+            implicitHeight: menuBox.height / grid.rows
           }
 
           PowerButton {
             text: "Logout"
             icon: "logout"
-            // command: "systemctl reboot"
+            command: "hyprctl dispatch exit"
 
             Layout.alignment: Qt.AlignCenter
-            implicitWidth: menu.width / grid.columns
-            implicitHeight: menu.height / grid.rows
+            implicitWidth: menuBox.width / grid.columns
+            implicitHeight: menuBox.height / grid.rows
           }
 
           PowerButton {
@@ -79,8 +91,8 @@ Scope {
             fill: 1
 
             Layout.alignment: Qt.AlignCenter
-            implicitWidth: menu.width / grid.columns
-            implicitHeight: menu.height / grid.rows
+            implicitWidth: menuBox.width / grid.columns
+            implicitHeight: menuBox.height / grid.rows
           }
 
           PowerButton {
@@ -89,8 +101,8 @@ Scope {
             command: "systemctl reboot"
 
             Layout.alignment: Qt.AlignCenter
-            implicitWidth: menu.width / grid.columns
-            implicitHeight: menu.height / grid.rows
+            implicitWidth: menuBox.width / grid.columns
+            implicitHeight: menuBox.height / grid.rows
           }
 
           PowerButton {
@@ -99,10 +111,17 @@ Scope {
             command: "systemctl poweroff"
 
             Layout.alignment: Qt.AlignCenter
-            implicitWidth: menu.width / grid.columns
-            implicitHeight: menu.height / grid.rows
+            implicitWidth: menuBox.width / grid.columns
+            implicitHeight: menuBox.height / grid.rows
           }
         }
+      }
+
+      MouseArea {
+        anchors.fill: parent
+        z: -1 // behind buttons to allow button clicks
+
+        onClicked: menuLoader.active = false
       }
     }
   }

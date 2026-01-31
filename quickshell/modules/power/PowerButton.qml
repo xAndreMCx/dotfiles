@@ -17,18 +17,35 @@ Item {
   }
 
   Rectangle {
+    id: button
     radius: 10
-    anchors.fill: parent
+    anchors.centerIn: parent
     color: mouseArea.containsMouse ? Config.colors.primary : "transparent"
+    width: 0.6 * root.width
+    height: 0.6 * root.height
+
+    Behavior on color {
+      ColorAnimation {
+        duration: 200;
+        easing.type: Easing.OutCubic
+      }
+    }
 
     ColumnLayout {
       anchors.centerIn: parent
       MaterialIcon {
         icon: root.icon
-        iconSize: 64
+        iconSize: 48
         Layout.alignment: Qt.AlignHCenter
         color: mouseArea.containsMouse ? Config.colors.text_dark : Config.colors.text
         fill: root.fill
+
+        Behavior on color {
+          ColorAnimation {
+            duration: 200;
+            easing.type: Easing.OutCubic
+          }
+        }
       }
       Text {
         Layout.alignment: Qt.AlignHCenter
@@ -36,14 +53,22 @@ Item {
         color: mouseArea.containsMouse ? Config.colors.text_dark : Config.colors.text
         font.family: Config.font_family
         font.pixelSize: Config.font_size
+
+        Behavior on color {
+          ColorAnimation {
+            duration: 200;
+            easing.type: Easing.OutCubic
+          }
+        }
       }
     }
   }
 
   MouseArea {
     id: mouseArea
-    anchors.fill: parent
+    anchors.fill: button
     hoverEnabled: true
+    cursorShape: Qt.PointingHandCursor
 
     onClicked: process.startDetached()
   }
