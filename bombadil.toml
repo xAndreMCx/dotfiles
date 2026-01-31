@@ -14,6 +14,7 @@ yazi = {source = "yazi", target = ".config/yazi"}
 bombadil = {source = "bombadil.toml", target = ".config/bombadil.toml"}
 bombadil_vars = {source = "bombadil", target = ".config/bombadil"}
 scripts = {source = "scripts", target = ".config/scripts"}
+lazygit = {source = "lazygit", target = ".config/lazygit"}
 
 [profiles.desktop]
 vars = ["bombadil/desktop_vars.toml"]
