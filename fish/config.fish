@@ -17,6 +17,7 @@ function starship_transient_rprompt_func
 end
 
 set -gx EDITOR nvim
+set -gx SUDO_EDITOR nvim
 
 starship init fish | source
 enable_transience
