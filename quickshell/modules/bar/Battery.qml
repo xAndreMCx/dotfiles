@@ -98,13 +98,13 @@ Item {
       // FullyCharged since it only occurs when plugged in and is 100% (never get 100% without being plugged in)
       icon: root.battery_icon(root.battery?.percentage, (root.battery?.state == UPowerDeviceState.Charging) || (root.battery?.state == UPowerDeviceState.FullyCharged))
       iconSize: 18
-      color: "{{colors.text_primary}}"
+      color: "#{{colors.fg_main}}"
       fill: 1
     }
 
     Text {
       text: `${Math.round(root.battery?.percentage * 100)}%`
-      color: Config.colors.text
+      color: "#{{colors.fg_main}}"
       font.family: Config.font_family
       font.pixelSize: Config.font_size
     }

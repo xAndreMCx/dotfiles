@@ -41,3 +41,6 @@ quickshell = {source = "quickshell", target = ".config/quickshell"}
 
 [profiles.catppuccin_mocha]
 vars = ["bombadil/catppuccin_mocha.toml"]
+
+[profiles.tokyo_night]
+vars = ["bombadil/tokyo_night.toml"]

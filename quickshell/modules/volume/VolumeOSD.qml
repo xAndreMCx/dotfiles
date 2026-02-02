@@ -59,8 +59,7 @@ Scope {
       Rectangle {
         anchors.fill: parent
         radius: height / 2
-        // color: Config.colors.base.replace("#", "#80")
-        color: Config.colors.base
+        color: "#{{colors.bg_main}}"
 
         RowLayout {
           anchors {
@@ -73,7 +72,7 @@ Scope {
             icon: "volume_up"
             iconSize: 24
             fill: 1
-            color: Config.colors.text
+            color: "#{{colors.fg_main}}"
           }
 
           Rectangle {
@@ -81,7 +80,7 @@ Scope {
 
             implicitHeight: 10
             radius: 20
-            color: Config.colors.surface
+            color: "#{{colors.bg_surface}}"
 
             Rectangle {
               anchors {
@@ -92,13 +91,13 @@ Scope {
 
               implicitWidth: parent.width * ((root.sink?.audio.volume ?? 0) / 1.5)
               radius: parent.radius
-              color: Config.colors.primary
+              color: "#{{colors.primary}}"
             }
           }
 
           Text {
             text: Math.round(root.sink?.audio.volume * 100) + "%"
-            color: Config.colors.text
+            color: "#{{colors.fg_main}}"
             Layout.preferredWidth: 30
             // Layout.alignment: Qt.AlignRight
 

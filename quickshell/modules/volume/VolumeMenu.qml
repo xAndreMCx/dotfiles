@@ -37,9 +37,9 @@ Scope {
       Rectangle {
         anchors.fill: parent
         radius: Config.rounding
-        color: "{{colors.background_primary}}"
+        color: "#{{colors.bg_main}}"
         border.width: 2
-        border.color: Config.colors.primary
+        border.color: "#{{colors.primary}}"
 
         ColumnLayout {
           id: column
@@ -73,7 +73,7 @@ Scope {
             Layout.alignment: Qt.AlignCenter
             implicitHeight: 2
             implicitWidth: parent.width * 0.8
-            color: "{{colors.background_tertiary}}"
+            color: "#{{colors.bg_selection}}"
           }
 
           ColumnLayout {

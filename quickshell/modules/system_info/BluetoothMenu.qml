@@ -35,9 +35,9 @@ Scope {
       Rectangle {
         anchors.fill: parent
         radius: Config.rounding
-        color: "{{colors.background_primary}}"
+        color: "#{{colors.bg_main}}"
         border.width: 2
-        border.color: Config.colors.primary
+        border.color: "#{{colors.primary}}"
       }
     }
   }

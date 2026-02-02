@@ -10,7 +10,7 @@ Rectangle {
   property int index
   property string monitor_name
   property string display_label: index
-  property color workspace_color: Config.colors.primary
+  property color workspace_color: "#{{colors.primary}}"
   property bool active: false
   property bool contains_windows: false
 
@@ -26,9 +26,9 @@ Rectangle {
     anchors.centerIn: parent
 
     color: {
-      if (mouseArea.containsMouse || active) return Config.colors.text_dark;
-      if (root.contains_windows) return "#22FF11";
-      return Config.colors.text;
+      if (mouseArea.containsMouse || active) return "#{{colors.fg_inverse}}";
+      if (root.contains_windows) return "#{{colors.secondary}}";
+      return "#{{colors.fg_main}}"
     }
 
     font.family: Config.font_family

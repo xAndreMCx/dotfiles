@@ -19,11 +19,11 @@ Item {
       MaterialIcon {
         icon: "calendar_today"
         fill: 1
-        color: Config.colors.text
+        color: "#{{colors.fg_main}}"
       }
 
       Text {
-        color: Config.colors.text
+        color: "#{{colors.fg_main}}"
         font.family: Config.font_family
         font.pixelSize: Config.font_size
         font.weight: Font.Bold
@@ -35,11 +35,11 @@ Item {
       spacing: 2
       MaterialIcon {
         icon: "schedule"
-        color: Config.colors.text
+        color: "#{{colors.fg_main}}"
       }
 
       Text {
-        color: Config.colors.text
+        color: "#{{colors.fg_main}}"
         font.family: Config.font_family
         font.pixelSize: Config.font_size
         font.weight: Font.Bold

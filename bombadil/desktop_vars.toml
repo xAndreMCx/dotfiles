@@ -1,5 +1,5 @@
 device = "desktop"
-bombadil_cmd = "bombadil watch -p desktop catppuccin_mocha"
+bombadil_cmd = "bombadil watch -p desktop tokyo_night"
 monitor_1 = "DP-1"
 monitor_2 = "HDMI-A-1"
 

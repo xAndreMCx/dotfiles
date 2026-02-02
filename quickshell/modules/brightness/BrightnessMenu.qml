@@ -39,9 +39,10 @@ Scope {
       Rectangle {
         anchors.fill: parent
         radius: Config.rounding
-        color: "{{colors.background_primary}}"
+        color: "#{{colors.bg_main}}"
+
         border.width: 2
-        border.color: Config.colors.primary
+        border.color: "#{{colors.primary}}"
 
         Slider {
           id: slider
@@ -55,12 +56,12 @@ Scope {
             implicitHeight: root.size - 10
             implicitWidth: parent.width + handleRect.width
             radius: root.size - 10
-            color: "{{colors.background_secondary}}"
+            color: "#{{colors.bg_surface}}"
 
             Rectangle {
               width: slider.visualPosition * slider.width
               height: parent.height
-              color: Config.colors.primary
+              color: "#{{colors.primary}}"
               // radius: root.size - 10
               topLeftRadius: root.size - 10
               bottomLeftRadius: root.size - 10
@@ -73,7 +74,7 @@ Scope {
             implicitWidth: root.size - 10
             implicitHeight: root.size - 10
             radius: root.size - 10
-            color: Config.colors.text
+            color: "#{{colors.fg_main}}"
           }
         }
       }

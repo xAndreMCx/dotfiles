@@ -9,13 +9,13 @@ Rectangle {
   id: root
   implicitWidth: Config.bar_height
   implicitHeight: Config.bar_height
-  color: mouseArea.containsMouse ? "{{colors.red}}" : "transparent"
+  color: mouseArea.containsMouse ? "#{{colors.red}}" : "transparent"
   radius: Config.bar_height
 
   MaterialIcon {
     anchors.centerIn: parent
     text: "power_settings_new"
-    color: mouseArea.containsMouse ? "{{colors.text_inverse}}" : "{{colors.red}}"
+    color: mouseArea.containsMouse ? "#{{colors.fg_inverse}}" : "#{{colors.red}}"
     font.weight: Font.DemiBold
     iconSize: 16
   }

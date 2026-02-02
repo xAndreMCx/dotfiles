@@ -26,11 +26,11 @@ Item {
       implicitWidth: root.size
       implicitHeight: root.size
       radius: root.size
-      color: iconArea.containsMouse ? Config.colors.primary : "transparent"
+      color: iconArea.containsMouse ? "#{{colors.primary}}" : "transparent"
       MaterialIcon {
         icon: root.icon
         anchors.centerIn: parent
-        color: iconArea.containsMouse ? Config.colors.text_dark : Config.colors.text
+        color: iconArea.containsMouse ? "#{{colors.fg_inverse}}" : "#{{colors.fg_main}}"
         fill: 1
         iconSize: root.iconSize
       }
@@ -55,12 +55,12 @@ Item {
         implicitHeight: root.size - 10
         implicitWidth: parent.width + handleRect.width
         radius: root.size - 10
-        color: "{{colors.background_secondary}}"
+        color: "#{{colors.bg_panel}}"
 
         Rectangle {
           width: slider.visualPosition * slider.width
           height: parent.height
-          color: Config.colors.primary
+          color: "#{{colors.primary}}"
           // radius: root.size - 10
           topLeftRadius: root.size - 10
           bottomLeftRadius: root.size - 10
@@ -73,13 +73,13 @@ Item {
         implicitWidth: root.size - 10
         implicitHeight: root.size - 10
         radius: root.size - 10
-        color: Config.colors.text
+        color: "#{{colors.fg_main}}"
       }
     }
 
     Text {
       text: slider.value + '%'
-      color: Config.colors.text
+      color: "#{{colors.fg_main}}"
       font.family: Config.font_family
       font.pixelSize: Config.font_size
       Layout.rightMargin: root.margins

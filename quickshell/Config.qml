@@ -8,11 +8,11 @@ Singleton {
   readonly property int bar_height: 22
   readonly property int rounding: 10
   readonly property QtObject colors: QtObject {
-    property string base: "{{colors.surface}}"
-    property string primary: "{{colors.accent_primary}}"
-    property string surface: "{{colors.background_secondary}}"
-    property string text: "{{colors.text_primary}}"
-    property string text_dark: "{{colors.text_inverse}}"
+    property string base: "#{{colors.bg_main}}"
+    property string primary: "#{{colors.primary}}"
+    property string surface: "#{{colors.bg_surface}}"
+    property string text: "#{{colors.fg_main}}"
+    property string text_dark: "#{{colors.fg_inverse}}"
   }
   readonly property QtObject datetime: QtObject {
     property string datetime: Qt.formatDateTime(clock.date, " dddd, dd MMM yyyy |  hh:mm AP")

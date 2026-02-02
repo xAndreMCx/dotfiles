@@ -10,7 +10,7 @@ Rectangle {
   implicitHeight: Config.bar_height
   implicitWidth: Config.bar_height
   radius: Config.bar_height
-  color: mouseArea.containsMouse ? Config.colors.primary : Config.colors.surface
+  color: mouseArea.containsMouse ? "#{{colors.primary}}" : "#{{colors.bg_surface}}"
 
   MaterialIcon {
     id: icon
@@ -18,7 +18,7 @@ Rectangle {
     icon: "volume_up"
     iconSize: 18
     fill: 1
-    color: mouseArea.containsMouse ? Config.colors.text_dark : Config.colors.text
+    color: mouseArea.containsMouse ? "#{{colors.fg_inverse}}" : "#{{colors.fg_main}}"
   }
 
   MouseArea {

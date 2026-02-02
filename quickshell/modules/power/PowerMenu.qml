@@ -27,7 +27,6 @@ Scope {
         top: true
         bottom: true
       }
-      // color: "transparent"
       color: Qt.rgba(0, 0, 0, 0.4)
       WlrLayershell.namespace: "power_menu"
 
@@ -37,9 +36,9 @@ Scope {
         id: menuBox
         anchors.centerIn: parent
         radius: Config.rounding
-        color: "{{colors.background_primary}}"
+        color: "#{{colors.bg_main}}"
         border.width: 2
-        border.color: "{{colors.red}}"
+        border.color: "#{{colors.red}}"
 
         width: root.focusedScreen ? (root.focusedScreen.height * (grid.columns / grid.rows) * root.menuSize) : 0
         height: root.focusedScreen ? (root.focusedScreen.height * root.menuSize) : 0

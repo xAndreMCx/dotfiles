@@ -21,3 +21,6 @@ set -gx SUDO_EDITOR nvim
 
 starship init fish | source
 enable_transience
+
+# source "~/.config/fish/themes/{{theme}}.theme"
+fish_config theme choose {{theme}}

@@ -14,7 +14,7 @@ Scope {
     id: bar
     screen: root.modelData
 
-    color: Config.colors.base
+    color: "#{{colors.bg_main}}"
     implicitHeight: Config.bar_height
     WlrLayershell.namespace: "bar-" + root.modelData.name
 
@@ -55,7 +55,7 @@ Scope {
         spacing: parent.space
 
         WindowTitle {
-          color: Config.colors.text
+          color: "#{{colors.fg_main}}"
         }
 
         // media
@@ -100,7 +100,7 @@ Scope {
     RoundCorner {
       corner: RoundCorner.CornerEnum.TopLeft
       size: parent.height
-      color: "{{colors.surface}}"
+      color: "#{{colors.bg_main}}"
 
       anchors {
         left: parent.left
@@ -110,7 +110,7 @@ Scope {
     RoundCorner {
       corner: RoundCorner.CornerEnum.TopRight
       size: parent.height
-      color: "{{colors.surface}}"
+      color: "#{{colors.bg_main}}"
 
       anchors {
         right: parent.right
@@ -131,7 +131,7 @@ Scope {
 
     RoundCorner {
       corner: RoundCorner.CornerEnum.BottomLeft
-      color: "{{colors.surface}}"
+      color: "#{{colors.bg_main}}"
       size: parent.height
 
       anchors {
@@ -142,7 +142,7 @@ Scope {
     RoundCorner {
       corner: RoundCorner.CornerEnum.BottomRight
       size: parent.height
-      color: "{{colors.surface}}"
+      color: "#{{colors.bg_main}}"
 
       anchors {
         right: parent.right

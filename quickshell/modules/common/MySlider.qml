@@ -13,13 +13,13 @@ Item {
   implicitHeight: root.size - 10
 
   Rectangle {
-    color: "{{colors.background_secondary}}"
+    color: "#{{colors.bg_surface}}"
     radius: root.size - 10
     anchors.fill: parent
 
     Rectangle {
       anchors.left: parent.left
-      color: Config.colors.primary
+      color: "#{{colors.primary}}"
       implicitHeight: root.size - 10
       radius: root.size - 10
       implicitWidth: parent.width * 0.9

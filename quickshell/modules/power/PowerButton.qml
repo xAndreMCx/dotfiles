@@ -20,7 +20,7 @@ Item {
     id: button
     radius: 10
     anchors.centerIn: parent
-    color: mouseArea.containsMouse ? Config.colors.primary : "transparent"
+    color: mouseArea.containsMouse ? "#{{colors.primary}}" : "transparent"
     width: 0.6 * root.width
     height: 0.6 * root.height
 
@@ -37,7 +37,7 @@ Item {
         icon: root.icon
         iconSize: 48
         Layout.alignment: Qt.AlignHCenter
-        color: mouseArea.containsMouse ? Config.colors.text_dark : Config.colors.text
+        color: mouseArea.containsMouse ? "#{{colors.fg_inverse}}" : "#{{colors.fg_main}}"
         fill: root.fill
 
         Behavior on color {
@@ -50,7 +50,7 @@ Item {
       Text {
         Layout.alignment: Qt.AlignHCenter
         text: root.text
-        color: mouseArea.containsMouse ? Config.colors.text_dark : Config.colors.text
+        color: mouseArea.containsMouse ? "#{{colors.fg_inverse}}" : "#{{colors.fg_main}}"
         font.family: Config.font_family
         font.pixelSize: Config.font_size
 

@@ -10,9 +10,9 @@ Item {
   property var target_screen
   property int start_id: (target_screen && target_screen.name === "{{monitor_1}}") ? 1 : 11
   property int count: 10
-  property color background_color: Config.colors.surface
+  property color background_color: "#{{colors.bg_surface}}"
   property int margin: 5
-  property color text_color: Config.colors.text
+  property color text_color: "#{{colors.fg_main}}"
 
   implicitHeight: Config.bar_height
   implicitWidth: rowLayout.width + 2 * margin

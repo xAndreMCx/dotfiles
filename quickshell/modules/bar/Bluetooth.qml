@@ -1,19 +1,22 @@
 import QtQuick
-import "root:/modules/common/"
-import "../../"
+
+import qs
+import qs.modules.common
 
 Rectangle {
   id: root
   implicitHeight: Config.bar_height
   implicitWidth: Config.bar_height
   radius: Config.bar_height
-  color: mouseArea.containsMouse ? Config.colors.primary : Config.colors.surface
+  color: mouseArea.containsMouse ? "#{{colors.primary}}" : "#{{colors.bg_surface}}"
+
 
   MaterialIcon {
     id: icon
     anchors.centerIn: parent
     icon: "bluetooth"
-    color: mouseArea.containsMouse ? Config.colors.text_dark : Config.colors.text
+    color: mouseArea.containsMouse ? "#{{colors.fg_inverse}}" : "#{{colors.fg_main}}"
+
   }
 
   MouseArea {

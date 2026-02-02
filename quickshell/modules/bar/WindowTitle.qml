@@ -1,7 +1,7 @@
 import QtQuick
 import Quickshell.Wayland
 
-import "../../"
+import qs
 
 // TODO: add a background for the title and maybe make the titles less "noisy"
 
