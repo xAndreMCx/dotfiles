@@ -1,0 +1,37 @@
+[colors]
+bg_dark         = "#11111b" # Deepest layer
+bg_main         = "#1e1e2e" # Standard background
+bg_panel        = "#181825" # Bars/Sidebars
+bg_surface      = "#313244" # Lighter UI elements 
+bg_float        = "#45475a" # Modals/Tooltips
+bg_selection    = "#585b70" # Text selection/Current line
+
+fg_main         = "#cdd6f4" # Primary text (Text)
+fg_soft         = "#bac2de" # Secondary text (Subtext1)
+fg_dim          = "#a6adc8" # Tertiary/Inactive (Subtext0)
+fg_ghost        = "#6c7086" # De-emphasized/Placeholders (Overlay0)
+fg_inverse      = "#11111b" # Text on bright backgrounds
+
+primary         = "#cba6f7" # Main accent
+secondary       = "#f5c2e7" # Secondary accent
+tertiary        = "#89dceb" # Third-tier highlight 
+
+success         = "#a6e3a1" # Green
+warning         = "#f9e2af" # Yellow
+error           = "#f38ba8" # Red
+info            = "#89b4fa" # Blue
+hint            = "#94e2d5" # Teal
+urgent          = "#fab387" # Orange
+
+black           = "#45475a"
+red             = "#f38ba8"
+green           = "#a6e3a1"
+yellow          = "#f9e2af"
+blue            = "#89b4fa"
+magenta         = "#cba6f7"
+cyan            = "#94e2d5"
+white           = "#bac2de"
+
+border_active   = "#cba6f7"
+border_inactive = "#313244"
+separator       = "#45475a"

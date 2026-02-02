@@ -2,7 +2,7 @@ local wezterm = require('wezterm')
 
 local LEFT_EDGE = wezterm.nerdfonts.ple_left_half_circle_thick
 local RIGHT_EDGE = wezterm.nerdfonts.ple_right_half_circle_thick
-local theme = 'Catppuccin Mocha'
+local theme = 'Tokyo Night'
 local colors = wezterm.get_builtin_color_schemes()[theme]
 
 local config = {
