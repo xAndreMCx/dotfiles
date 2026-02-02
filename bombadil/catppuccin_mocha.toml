@@ -1,24 +1,38 @@
+theme = "catppuccin_mocha"
 [colors]
-background_primary = "#1E1E2E"     # Base: Main background
-background_secondary = "#313244"   # Surface0: Secondary background for cards/panels
-background_tertiary = "#45475A"    # Surface1: Tertiary background for smaller elements
-background_inverse = "#CDD6F4"     # Text: Opposite for contrast (e.g., light text)
-text_primary = "#CDD6F4"           # Text: Main text color
-text_secondary = "#BAC2DE"         # Subtext1: Secondary text for subtitles
-text_accent = "#89B4FA"            # Blue: Emphasized text (e.g., links)
-text_disabled = "#6C7086"          # Overlay0: Disabled/inactive text
-text_inverse = "#181825"           # Mantle
-accent_primary = "#89B4FA"         # Blue: Primary accent for buttons/links
-accent_secondary = "#74C7EC"       # Sapphire: Secondary accent for hover states
-border_primary = "#585B70"         # Surface2: Main border color
-border_secondary = "#7F849C"       # Overlay1: Subtler border color
-success = "#A6E3A1"                # Green: Success states
-warning = "#FAB387"                # Peach: Warning states
-error = "#F38BA8"                  # Red: Error states
-info = "#89DCEB"                   # Sky: Informational messages
-focus = "#B4BEFE"                  # Lavender: Focus states (e.g., outlines)
-hover = "#9399B2"                  # Overlay2: Hover states
-active = "#CBA6F7"                 # Mauve: Active/pressed states
-surface = "#181825"                # Mantle: Neutral surface for modals/overlays
-shadow = "#11111B"                 # Crust: Shadow effects
-red = "#F38BA8"
+bg_dark         = "11111b" # Crust
+bg_main         = "1e1e2e" # Base
+bg_panel        = "181825" # Mantle
+bg_surface      = "313244" # Surface0
+bg_float        = "45475a" # Surface1
+bg_selection    = "585b70" # Surface2
+
+fg_main         = "cdd6f4" # Text
+fg_soft         = "bac2de" # Subtext1
+fg_dim          = "a6adc8" # Subtext0
+fg_ghost        = "6c7086" # Overlay0
+fg_inverse      = "11111b" # Crust (Text on bright backgrounds)
+
+primary         = "cba6f7" # Mauve
+secondary       = "f5c2e7" # Pink
+tertiary        = "89dceb" # Sky
+
+success         = "a6e3a1" # Green
+warning         = "f9e2af" # Yellow
+error           = "f38ba8" # Red
+info            = "89b4fa" # Blue
+hint            = "94e2d5" # Teal
+urgent          = "fab387" # Peach (Orange)
+
+black           = "45475a" # Surface1
+red             = "f38ba8" # Red
+green           = "a6e3a1" # Green
+yellow          = "f9e2af" # Yellow
+blue            = "89b4fa" # Blue
+magenta         = "cba6f7" # Mauve
+cyan            = "94e2d5" # Teal
+white           = "bac2de" # Subtext1
+
+border_active   = "cba6f7" # Mauve
+border_inactive = "313244" # Surface0
+separator       = "45475a" # Surface1
