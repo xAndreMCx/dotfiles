@@ -71,7 +71,7 @@ Scope {
         Item {
           Layout.fillWidth: true
         }
-        // SysTray {}
+        SysTray {}
 
         SysInfo {}
 
