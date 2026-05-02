@@ -1,4 +1,5 @@
 local wezterm = require('wezterm')
+local resurrect = wezterm.plugin.require('https://github.com/MLFlexer/resurrect.wezterm')
 
 local LEFT_EDGE = wezterm.nerdfonts.ple_left_half_circle_thick
 local RIGHT_EDGE = wezterm.nerdfonts.ple_right_half_circle_thick
@@ -65,6 +66,16 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
     { Foreground = { Color = edge_foreground } },
     { Text = RIGHT_EDGE },
   }
+end)
+
+resurrect.state_manager.periodic_save({ interval_seconds = 600 })
+
+wezterm.on('update-right-status', function(window, pane)
+  local workspace = window:active_workspace()
+  window:set_right_status(wezterm.format({
+    { Foreground = { Color = colors.ansi[4] } }, -- Using theme's blue
+    { Text = wezterm.nerdfonts.oct_project .. ' ' .. workspace .. '  ' },
+  }))
 end)
 
 return config

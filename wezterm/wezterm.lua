@@ -1,5 +1,8 @@
 local wezterm = require('wezterm')
 
+local resurrect = require('resurrect')
+resurrect.setup()
+
 local function merge_tables(...)
   local merged = {}
   for _, tbl in ipairs({ ... }) do
