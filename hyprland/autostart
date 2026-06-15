@@ -1,7 +1,0 @@
-#!/bin/bash
-
-hyprpaper &
-quickshell &
-wl-paste --watch cliphist store &
-{{bombadil_cmd}} &
-hyprctl dispatch workspace 1
