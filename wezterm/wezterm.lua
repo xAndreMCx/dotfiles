@@ -1,8 +1,5 @@
 local wezterm = require('wezterm')
 
-local resurrect = require('resurrect')
-resurrect.setup()
-
 local function merge_tables(...)
   local merged = {}
   for _, tbl in ipairs({ ... }) do
@@ -15,6 +12,8 @@ end
 
 local config = wezterm.config_builder()
 config.audible_bell = 'Disabled'
+
+config.default_prog = { 'zellij' }
 
 local keybinds = require('keybinds')
 local appearance = require('appearance')
