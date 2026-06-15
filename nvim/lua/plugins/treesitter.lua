@@ -2,7 +2,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   name = 'treesitter',
   build = ':TSUpdate',
-  main = 'nvim-treesitter.configs',
+  main = 'nvim-treesitter',
   opts = {
     ensure_installed = {
       'asm',
@@ -16,8 +16,6 @@ return {
       'fish',
       'html',
       'hyprlang',
-      'json',
-      'jsonc',
       'lua',
       'luadoc',
       'make',
