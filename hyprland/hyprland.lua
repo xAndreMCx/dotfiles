@@ -11,6 +11,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("wl_paste --watch cliphist store")
   hl.exec_cmd("{{bombadil_cmd}}")
   hl.exec_cmd("udiskie")
+  hl.exec_cmd("~/.config/scripts/volume_gestures.fish")
   hl.exec_cmd("hyprctl dispatch workspace 1")
 end)
 

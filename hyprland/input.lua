@@ -45,15 +45,32 @@ hl.config({
   },
 })
 
+--{% if device == "laptop" %}
+hl.device({
+  name = "msft0001:01-06cb:ce2d-touchpad",
+  sensitivity = 0.6,
+})
+
 hl.gesture({
   fingers = 3,
   direction = "horizontal",
   action = "workspace",
 })
 
---{% if device == "laptop" %}
-hl.device({
-  name = "msft0001:01-06cb:ce2d-touchpad",
-  sensitivity = 0.6,
+hl.gesture({
+  fingers = 4,
+  direction = "left",
+  action = function()
+    hl.exec_cmd("playerctl previous")
+  end,
 })
+
+hl.gesture({
+  fingers = 4,
+  direction = "right",
+  action = function()
+    hl.exec_cmd("playerctl next")
+  end,
+})
+
 --{% endif -%}
