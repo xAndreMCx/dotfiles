@@ -59,7 +59,7 @@ hl.gesture({
 
 hl.gesture({
   fingers = 4,
-  direction = "left",
+  direction = "right",
   action = function()
     hl.exec_cmd("playerctl previous")
   end,
@@ -67,7 +67,7 @@ hl.gesture({
 
 hl.gesture({
   fingers = 4,
-  direction = "right",
+  direction = "left",
   action = function()
     hl.exec_cmd("playerctl next")
   end,
