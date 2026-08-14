@@ -71,3 +71,7 @@ hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), { locked = true })
 -- Macros
 hl.bind("SUPER + ALT + F1", hl.dsp.exec_cmd("~/.config/scripts/spam_click.py 40 0"))
 hl.bind("SUPER + ALT + F1", hl.dsp.exec_cmd("~/.config/scripts/spam_click.py 40 1"))
+
+-- Discord
+hl.bind("SUPER + F1", hl.dsp.send_shortcut({ mods = "CTRL SHIFT", key = "M", window = "class:^(discord)$" }))
+hl.bind("SUPER + F2", hl.dsp.send_shortcut({ mods = "CTRL SHIFT", key = "D", window = "class:^(discord)$" }))
