@@ -26,14 +26,20 @@ Rectangle {
     anchors.centerIn: parent
 
     color: {
-      if (mouseArea.containsMouse || active) return "#{{colors.fg_inverse}}";
-      if (root.contains_windows) return "#{{colors.secondary}}";
-      return "#{{colors.fg_main}}"
+      if (mouseArea.containsMouse || active)
+        return "#{{colors.fg_inverse}}";
+      if (root.contains_windows)
+        return "#{{colors.secondary}}";
+      return "#{{colors.fg_main}}";
     }
 
     font.family: Config.font_family
     font.pixelSize: Config.font_size
-    font.weight: mouseArea.containsMouse ? Font.Bold : Font.Normal
+    font.weight: {
+      if (mouseArea.containsMouse || active || root, contains_windows)
+        return Font.Bold;
+      return Font.Normal;
+    }
     text: display_label
   }
 
@@ -44,6 +50,6 @@ Rectangle {
     hoverEnabled: true
     cursorShape: Qt.PointingHandCursor
 
-    onClicked: Hyprland?.dispatch(`workspace ${root.index}`)
+    onClicked: Hyprland?.dispatch(`hl.dsp.focus({workspace = ${root.index}})`)
   }
 }
