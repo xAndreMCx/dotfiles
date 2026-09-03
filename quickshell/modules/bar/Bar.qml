@@ -14,7 +14,7 @@ Scope {
     id: bar
     screen: root.modelData
 
-    color: "#{{colors.bg_main}}"
+    color: "transparent"
     implicitHeight: Config.bar_height
     WlrLayershell.namespace: "bar-" + root.modelData.name
 
@@ -24,69 +24,144 @@ Scope {
       top: true
     }
 
-    RowLayout {
-      id: row
+    // Left Pill
+    Item {
+      anchors {
+        left: parent.left
+        top: parent.top
+        bottom: parent.bottom
+      }
+      width: leftBar.implicitWidth + (Config.bar_height)
 
-      property int space: 10
-      property int margin: 10
+      Rectangle {
+        color: "#{{colors.bg_main}}"
+        bottomRightRadius: Config.bar_height / 2
 
-      width: parent.width
-      height: parent.height
+        width: parent.width
+        height: Config.bar_height
+      }
 
       RowLayout {
         id: leftBar
-        spacing: parent.space
-        Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-        Layout.leftMargin: parent.margin
-        Layout.preferredWidth: Math.max(leftBar.width, rightBar.width)
-
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+        spacing: 10
         ArchIcon {}
         Workspaces {
           target_screen: root.modelData
         }
-        Item {
-          Layout.fillWidth: true
+
+      }
+
+      RoundCorner {
+        corner: RoundCorner.CornerEnum.TopLeft
+        size: parent.height / 2
+        color: "#{{colors.bg_main}}"
+
+        anchors {
+          left: parent.right
+        }
+      }
+
+    }
+
+    // Center Pill
+    Item {
+      anchors {
+        horizontalCenter: parent.horizontalCenter
+        top: parent.top
+        bottom: parent.bottom
+      }
+      width: middleBar.implicitWidth + (Config.bar_height * 2)
+
+      Rectangle {
+        color: "#{{colors.bg_main}}"
+        bottomRightRadius: Config.bar_height / 2
+        bottomLeftRadius: Config.bar_height / 2
+        width: parent.width
+        height: parent.height
+      }
+
+      RoundCorner {
+        corner: RoundCorner.CornerEnum.TopRight
+        size: parent.height / 2
+        color: "#{{colors.bg_main}}"
+
+        anchors {
+          right: parent.left
         }
       }
 
       RowLayout {
         id: middleBar
-        Layout.alignment: Qt.AlignCenter
-        spacing: parent.space
+        anchors.centerIn: parent
+        spacing: 10
 
         WindowTitle {
           color: "#{{colors.fg_main}}"
         }
+      }
 
-        // media
+      RoundCorner {
+        corner: RoundCorner.CornerEnum.TopLeft
+        size: parent.height / 2
+        color: "#{{colors.bg_main}}"
+
+        anchors {
+          left: parent.right
+        }
+      }
+    }
+
+    // Right Pill
+    Item {
+      anchors {
+        right: parent.right
+        top: parent.top
+        bottom: parent.bottom
+      }
+      width: rightBar.implicitWidth + (Config.bar_corner_radius * 2)
+
+      RoundCorner {
+        corner: RoundCorner.CornerEnum.TopRight
+        size: parent.height / 2
+        color: "#{{colors.bg_main}}"
+
+        anchors {
+          right: parent.left
+        }
+      }
+
+      Rectangle {
+        color: "#{{colors.bg_main}}"
+        bottomLeftRadius: Config.bar_height / 2
+        width: parent.width
+        height: parent.height
       }
 
       RowLayout {
         id: rightBar
-        spacing: parent.space
-        Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-        Layout.rightMargin: parent.margin
-        Layout.preferredWidth: Math.max(leftBar.width, rightBar.width)
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        spacing: 10
 
-        Item {
-          Layout.fillWidth: true
-        }
         SysTray {}
-
         SysInfo {}
-
         DateTime {}
-
         PowerButton {}
       }
     }
   }
 
+  // Top inner corners
   PanelWindow {
+    screen: root.modelData
     color: "transparent"
     exclusionMode: ExclusionMode.Ignore
-    implicitHeight: 15
-    WlrLayershell.namespace: "test"
+    implicitHeight: Config.bar_corner_radius
+    WlrLayershell.namespace: "bar_corners-" + root.modelData.name
     margins {
       top: Config.bar_height
     }
@@ -109,38 +184,6 @@ Scope {
 
     RoundCorner {
       corner: RoundCorner.CornerEnum.TopRight
-      size: parent.height
-      color: "#{{colors.bg_main}}"
-
-      anchors {
-        right: parent.right
-      }
-    }
-  }
-
-  PanelWindow {
-    color: "transparent"
-    exclusionMode: ExclusionMode.Ignore
-    implicitHeight: 15
-
-    anchors {
-      bottom: true
-      left: true
-      right: true
-    }
-
-    RoundCorner {
-      corner: RoundCorner.CornerEnum.BottomLeft
-      color: "#{{colors.bg_main}}"
-      size: parent.height
-
-      anchors {
-        left: parent.left
-      }
-    }
-
-    RoundCorner {
-      corner: RoundCorner.CornerEnum.BottomRight
       size: parent.height
       color: "#{{colors.bg_main}}"
 
