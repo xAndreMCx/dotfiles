@@ -7,6 +7,7 @@ Singleton {
 
   readonly property int bar_height: 22
   readonly property int rounding: 10
+  readonly property int bar_corner_radius: 20
   readonly property QtObject colors: QtObject {
     property string base: "#{{colors.bg_main}}"
     property string primary: "#{{colors.primary}}"
