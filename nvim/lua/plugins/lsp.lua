@@ -195,10 +195,7 @@ return {
           end,
         },
 
-        qmlls = {
-          cmd = { 'qmlls6' },
-          filetypes = { 'qml', 'qmljs' },
-        },
+        -- qmlls is set up explicitly below to bypass mason
       }
 
       -- Ensure the servers and tools above are installed
@@ -221,13 +218,23 @@ return {
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
+          qmlls = function()
+            -- do nothing to prevent mason from setting up Qt's qmlls
+          end,
         },
+      })
+
+      -- Set up qmlls explicitly to bypass mason's overrides
+      require('lspconfig').qmlls.setup({
+        cmd = { '/home/andre/go/bin/qml-language-server' },
+        filetypes = { 'qml', 'qmljs' },
+        root_dir = function(fname)
+          return require('lspconfig.util').root_pattern('shell.qml', 'qmldir', '.git')(fname)
+        end,
+        capabilities = capabilities,
       })
     end,
   },
