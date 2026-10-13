@@ -13,7 +13,8 @@ end
 local config = wezterm.config_builder()
 config.audible_bell = 'Disabled'
 
-config.default_prog = { 'zellij' }
+-- Allow Wayland/Hyprland to settle window geometry before Zellij queries PTY dimensions
+config.default_prog = { 'sh', '-c', 'sleep 0.05 && exec zellij "$@"', '--' }
 
 local keybinds = require('keybinds')
 local appearance = require('appearance')

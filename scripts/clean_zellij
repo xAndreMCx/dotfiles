@@ -1,0 +1,24 @@
+#!/usr/bin/env fish
+
+for line in (zellij list-sessions -n 2>/dev/null)
+    # Extracts the session name only if it doesn't start with '#'
+    set -l session_name (string match -r '^[^#\s]+' -- $line)
+    test -z "$session_name"; and continue
+
+    # Never kill the current session
+    string match -q "*\(current\)*" "$line"; and continue
+
+    # Delete exited sessions, kill active unused ones
+    if string match -q "*\(EXITED*" "$line"
+        zellij delete-session "$session_name" 2>/dev/null
+    else
+        zellij kill-session "$session_name" 2>/dev/null
+    end
+end
+
+# Clear any lingering cache folders
+find ~/.cache/zellij/*/session_info/ -mindepth 1 -maxdepth 1 -type d -not -name "#*" -exec rm -rf {} + 2>/dev/null
+
+if type -q notify-send
+    notify-send "Zellij" "Throw-away sessions cleaned up"
+end
