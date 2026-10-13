@@ -12,7 +12,7 @@ set -l pending 0 # accumulated delta not yet flushed to wpctl
 set -l flush_every 5 # call wpctl once every N update events
 set -l event_count 0
 
-sudo stdbuf -oL libinput debug-events --device $device | while read -l line
+stdbuf -oL libinput debug-events --device $device | while read -l line
     if not string match -q "*GESTURE_SWIPE*" -- $line
         continue
     end
